@@ -1,0 +1,24 @@
+{
+  "name": "gui2one_particles",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prebuild": "ncp ./public ./dist",
+    "build": "parcel ./src/index.js ./src/style.scss  --target browser  --out-file gui2one_particles.js",
+    "serve": "npx live-server ./dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cssnano": "^4.1.10",
+    "ncp": "^2.0.0",
+    "sass": "^1.30.0",
+    "typescript": "^4.1.3"
+  },
+  "dependencies": {
+    "noisejs": "^2.1.0",
+    "pixi.js": "^5.3.6"
+  }
+}

@@ -1,0 +1,1 @@
+{"version":3,"sources":["style.scss"],"names":[],"mappings":"AAAA;AAAA;EAEE;EACA;EACA;;;AAGF;EACE","file":"style.css","sourceRoot":"..\\src","sourcesContent":["html,\r\nbody {\r\n  padding: 0px;\r\n  margin: 0px;\r\n  box-sizing: border-box;\r\n}\r\n\r\ncanvas {\r\n  display: block;\r\n}\r\n"]}
