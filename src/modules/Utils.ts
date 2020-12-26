@@ -8,3 +8,7 @@ export const clamp = (src, min, max): number => {
   else if (src > max) return max;
   else return src;
 };
+
+export const lerp = (ratio, value1, value2): number => {
+  return (value2 - value1) * clamp(ratio, 0, 1) + value1;
+};

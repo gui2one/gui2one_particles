@@ -13,8 +13,8 @@ export default class Particle extends PIXI.Sprite {
     // this.position = new Vector2();
     this.velocity = new Vector2();
     this.mass = 1;
-    this.scale.set(8);
-    this.life = 3.0;
+    this.scale.set(10);
+    this.life = 20.0;
     this.age = 0;
 
     this.dead = false;

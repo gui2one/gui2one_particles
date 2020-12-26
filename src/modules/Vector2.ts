@@ -16,16 +16,27 @@ export default class Vector2 {
   add(vec: Vector2) {
     this.x += vec.x;
     this.y += vec.y;
-  }
 
+    return this;
+  }
+  subtract(vec: Vector2) {
+    this.x -= vec.x;
+    this.y -= vec.y;
+
+    return this;
+  }
   mult(vec: Vector2) {
     this.x *= vec.x;
     this.y *= vec.y;
+
+    return this;
   }
 
   multScalar(mult: number) {
     this.x *= mult;
     this.y *= mult;
+
+    return this;
   }
 
   mag(): number {
@@ -40,5 +51,7 @@ export default class Vector2 {
     let mag = this.mag();
     this.x /= mag;
     this.y /= mag;
+
+    return this;
   }
 }

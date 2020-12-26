@@ -203,16 +203,25 @@ function () {
   Vector2.prototype.add = function (vec) {
     this.x += vec.x;
     this.y += vec.y;
+    return this;
+  };
+
+  Vector2.prototype.subtract = function (vec) {
+    this.x -= vec.x;
+    this.y -= vec.y;
+    return this;
   };
 
   Vector2.prototype.mult = function (vec) {
     this.x *= vec.x;
     this.y *= vec.y;
+    return this;
   };
 
   Vector2.prototype.multScalar = function (mult) {
     this.x *= mult;
     this.y *= mult;
+    return this;
   };
 
   Vector2.prototype.mag = function () {
@@ -227,6 +236,7 @@ function () {
     var mag = this.mag();
     this.x /= mag;
     this.y /= mag;
+    return this;
   };
 
   return Vector2;
@@ -49114,9 +49124,9 @@ function (_super) {
     _this.velocity = new Vector2_1.default();
     _this.mass = 1;
 
-    _this.scale.set(8);
+    _this.scale.set(10);
 
-    _this.life = 3.0;
+    _this.life = 20.0;
     _this.age = 0;
     _this.dead = false;
     return _this;
@@ -49132,7 +49142,7 @@ exports.default = Particle;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.clamp = exports.fit_range = void 0;
+exports.lerp = exports.clamp = exports.fit_range = void 0;
 
 var fit_range = function fit_range(src, src_min, src_max, dst_min, dst_max) {
   src = exports.clamp(src, src_min, src_max);
@@ -49146,7 +49156,260 @@ var clamp = function clamp(src, min, max) {
 };
 
 exports.clamp = clamp;
-},{}],"modules/ParticleEmitter.ts":[function(require,module,exports) {
+
+var lerp = function lerp(ratio, value1, value2) {
+  return (value2 - value1) * exports.clamp(ratio, 0, 1) + value1;
+};
+
+exports.lerp = lerp;
+},{}],"modules/GradientRamp.ts":[function(require,module,exports) {
+"use strict";
+
+var __extends = this && this.__extends || function () {
+  var _extendStatics = function extendStatics(d, b) {
+    _extendStatics = Object.setPrototypeOf || {
+      __proto__: []
+    } instanceof Array && function (d, b) {
+      d.__proto__ = b;
+    } || function (d, b) {
+      for (var p in b) {
+        if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p];
+      }
+    };
+
+    return _extendStatics(d, b);
+  };
+
+  return function (d, b) {
+    _extendStatics(d, b);
+
+    function __() {
+      this.constructor = d;
+    }
+
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+  };
+}();
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ColorGradientKey = exports.FloatGradientKey = exports.GradientKeyBase = exports.ColorGradientRamp = exports.FloatGradientRamp = void 0;
+
+var Utils_1 = require("./Utils");
+
+var GradientRampBase =
+/** @class */
+function () {
+  function GradientRampBase() {
+    var _this = this;
+
+    this.presets = {
+      rampUp: function rampUp() {
+        console.log("ramp up !!!");
+
+        if (_this instanceof FloatGradientRamp) {
+          _this.keys = [];
+
+          _this.addKey(0.0, 0.0);
+
+          _this.addKey(1.0, 1.0);
+        }
+      },
+      rampDown: function rampDown() {
+        console.log("ramp up !!!");
+
+        if (_this instanceof FloatGradientRamp) {
+          _this.keys = [];
+
+          _this.addKey(0.0, 1.0);
+
+          _this.addKey(1.0, 0.0);
+        }
+      }
+    };
+  }
+
+  GradientRampBase.prototype.getValueAt = function (pos) {
+    pos = Utils_1.clamp(pos, 0, 1);
+    var keys_before = this.keys.filter(function (value) {
+      return value.pos <= pos;
+    });
+    var keys_after = this.keys.filter(function (value) {
+      return value.pos > pos;
+    });
+    var key1 = keys_before[keys_before.length - 1];
+    var key2 = keys_after[0];
+
+    if (key2 === undefined) {
+      key2 = key1;
+    } //get pos relative to key1 and key2
+
+
+    var pos_interp = Utils_1.fit_range(pos - key1.pos, 0, key2.pos - key1.pos, 0, 1);
+
+    if (this instanceof FloatGradientRamp) {
+      var interp = Utils_1.lerp(pos_interp, key1.value, key2.value);
+      return interp;
+    } else if (this instanceof ColorGradientRamp) {
+      var interp_r = Utils_1.lerp(pos_interp, key1.value.r, key2.value.r);
+      var interp_g = Utils_1.lerp(pos_interp, key1.value.g, key2.value.g);
+      var interp_b = Utils_1.lerp(pos_interp, key1.value.b, key2.value.b);
+      var interp_a = Utils_1.lerp(pos_interp, key1.value.a, key2.value.a);
+      return {
+        r: interp_r,
+        g: interp_g,
+        b: interp_b,
+        a: interp_a
+      };
+    }
+  };
+
+  GradientRampBase.prototype.sortKeys = function () {
+    // sort keys by pos
+    this.keys = this.keys.sort(function (a, b) {
+      return a.pos - b.pos;
+    });
+  };
+
+  GradientRampBase.prototype.addKey = function (pos, value) {
+    if (this instanceof FloatGradientRamp) {
+      var key = new FloatGradientKey();
+      key.pos = pos;
+      key.value = value;
+      this.keys.push(key);
+    } else if (this instanceof ColorGradientRamp) {
+      var key = new ColorGradientKey();
+      key.pos = pos;
+      key.value = value;
+      this.keys.push(key);
+    }
+
+    this.sortKeys();
+  };
+
+  GradientRampBase.prototype.setKeyValue = function (index, value) {
+    this.keys[index].value = value;
+  };
+
+  return GradientRampBase;
+}();
+
+exports.default = GradientRampBase;
+
+var FloatGradientRamp =
+/** @class */
+function (_super) {
+  __extends(FloatGradientRamp, _super);
+
+  function FloatGradientRamp() {
+    var _this = _super.call(this) || this;
+
+    _this.keys = Array();
+    var key_start = new FloatGradientKey();
+    key_start.pos = 0.0;
+    key_start.value = 0.0;
+
+    _this.keys.push(key_start);
+
+    var key_end = new FloatGradientKey();
+    key_end.pos = 1.0;
+    key_end.value = 1.0;
+
+    _this.keys.push(key_end);
+
+    _this.sortKeys();
+
+    return _this;
+  }
+
+  return FloatGradientRamp;
+}(GradientRampBase);
+
+exports.FloatGradientRamp = FloatGradientRamp;
+
+var ColorGradientRamp =
+/** @class */
+function (_super) {
+  __extends(ColorGradientRamp, _super);
+
+  function ColorGradientRamp() {
+    var _this = _super.call(this) || this;
+
+    _this.keys = Array();
+    var key_start = new ColorGradientKey();
+    key_start.pos = 0.0;
+    key_start.value = {
+      r: 1,
+      g: 1,
+      b: 0,
+      a: 1
+    };
+
+    _this.keys.push(key_start);
+
+    var key_end = new ColorGradientKey();
+    key_end.pos = 1.0;
+    key_end.value = {
+      r: 1,
+      g: 0,
+      b: 1,
+      a: 1
+    };
+
+    _this.keys.push(key_end);
+
+    _this.sortKeys();
+
+    return _this;
+  }
+
+  return ColorGradientRamp;
+}(GradientRampBase);
+
+exports.ColorGradientRamp = ColorGradientRamp;
+
+var GradientKeyBase =
+/** @class */
+function () {
+  function GradientKeyBase() {}
+
+  return GradientKeyBase;
+}();
+
+exports.GradientKeyBase = GradientKeyBase;
+
+var FloatGradientKey =
+/** @class */
+function (_super) {
+  __extends(FloatGradientKey, _super);
+
+  function FloatGradientKey() {
+    var _this = _super.call(this) || this;
+
+    _this.value = 0.0;
+    return _this;
+  }
+
+  return FloatGradientKey;
+}(GradientKeyBase);
+
+exports.FloatGradientKey = FloatGradientKey;
+
+var ColorGradientKey =
+/** @class */
+function (_super) {
+  __extends(ColorGradientKey, _super);
+
+  function ColorGradientKey() {
+    return _super.call(this) || this;
+  }
+
+  return ColorGradientKey;
+}(GradientKeyBase);
+
+exports.ColorGradientKey = ColorGradientKey;
+},{"./Utils":"modules/Utils.ts"}],"modules/ParticleEmitter.ts":[function(require,module,exports) {
 "use strict";
 
 var __extends = this && this.__extends || function () {
@@ -49228,12 +49491,15 @@ var PIXI = __importStar(require("pixi.js"));
 
 var Utils_1 = require("./Utils");
 
+var GradientRamp_1 = require("./GradientRamp");
+
 var ParticleEmitter =
 /** @class */
 function () {
   function ParticleEmitter() {
     this.limit_num = 5000;
-    this.rand_vel_amount = 20.0;
+    this.rand_vel_amount = 10.0;
+    this.rotation_speed = 0.2;
     this.pixi_container = new PIXI.Container(); // this.pixi_container.autoResize = true;
 
     this.textures = [];
@@ -49245,20 +49511,57 @@ function () {
     this.particles = [];
     this.emit_vel = new Vector2_1.default(0.0, 0.0);
     this.position = new Vector2_1.default();
-    this.amount_per_second = 200; // this.startEmission();
-    // console.log("Particle Emitter Constructor");
+    this.amount_per_second = 10;
+    this.scale_over_life = new GradientRamp_1.FloatGradientRamp();
+    this.scale_over_life.setKeyValue(0, 1.0);
+    this.scale_over_life.setKeyValue(1, 1.0); // this.scale_over_life.addKey(0.5, 1.5);
+
+    console.log("interpolation : ", this.scale_over_life.getValueAt(0.5)); // this.scale_over_life.presets.rampDown();
+
+    this.color_over_life = new GradientRamp_1.ColorGradientRamp(); // this.color_over_life.getValueAt(0.5);
   }
+
+  ParticleEmitter.prototype.emitParticlesBase = function (num) {
+    this.setNewParticlesPos(num);
+
+    for (var i = 0; i < num; i++) {
+      // const p = <Particle>PIXI.Sprite.from("snowflake.png"); // as Particle;
+      var p = this.particles[this.particles.length - 1 - i];
+      p.anchor.set(0.5);
+      p.scale.set(Utils_1.fit_range(Math.random(), 0, 1, 0.1, 0.04));
+      p.mass = Utils_1.fit_range(Math.random(), 0, 1, 0.1, 1.0);
+      p.tint = 0xffffff;
+      this.rand_vel_amount;
+      var new_vel = this.emit_vel.clone();
+      var rand_vel = new Vector2_1.default(Math.random() * 2 - 1, Math.random() * 2 - 1);
+      rand_vel.normalize();
+      rand_vel.multScalar(this.rand_vel_amount * Math.random());
+      new_vel.add(rand_vel);
+      p.velocity = new_vel;
+      var emitter_pos = this.position.clone();
+      p.texture = this.textures[0];
+    }
+
+    this.pixi_container.removeChildren();
+
+    for (var _i = 0, _a = this.particles; _i < _a.length; _i++) {
+      var p = _a[_i];
+      this.pixi_container.addChild(p);
+    }
+  };
 
   ParticleEmitter.prototype.emitParticles = function (num) {
     console.warn("emit method is Not implemented");
   };
+
+  ParticleEmitter.prototype.setNewParticlesPos = function (num) {};
 
   ParticleEmitter.prototype.startEmission = function () {
     var _this = this;
 
     if (this.emit_interval === undefined) {
       this.emit_interval = setInterval(function () {
-        _this.emitParticles(1);
+        _this.emitParticlesBase(1);
       }, 1000 / this.amount_per_second);
     }
   };
@@ -49282,14 +49585,27 @@ function () {
     var delta_time = ps.clock.getDeltaTime();
 
     for (var _i = 0, _a = this.particles; _i < _a.length; _i++) {
-      var p = _a[_i];
+      var p = _a[_i]; // velocity
+
       var vel = p.velocity.clone();
-      vel.multScalar(delta_time);
-      p.age += delta_time;
-      p.scale.set(Utils_1.fit_range(p.age, 0, p.life, 0.1, 0.02));
+
+      for (var _b = 0, forces_1 = forces; _b < forces_1.length; _b++) {
+        var force = forces_1[_b];
+        vel = force.update(p); // vel.multScalar(delta_time);
+      } // vel.multScalar(delta_time);
+
+
+      p.velocity = vel; //age
+
+      p.age += delta_time; // rotation
+
+      p.rotation += delta_time * this.rotation_speed;
+      var scale_now = this.scale_over_life.getValueAt(Utils_1.clamp(p.age / p.life, 0, 1)); // let scale = fit_range(p.age, 0, p.life, 0.1, 0.02);
+
+      p.scale.set(p.scale.x * scale_now, p.scale.y * scale_now);
       p.alpha = Utils_1.fit_range(p.age, 0, p.life, 1.0, 0.0);
       if (p.age > p.life) p.dead = true;
-      p.position.set(p.position.x + vel.x, p.position.y + vel.y);
+      p.position.set(p.position.x + vel.x * delta_time, p.position.y + vel.y * delta_time);
     }
   };
 
@@ -49304,34 +49620,23 @@ function (_super) {
   __extends(LineEmitter, _super);
 
   function LineEmitter() {
-    return _super !== null && _super.apply(this, arguments) || this;
+    var _this = _super.call(this) || this;
+
+    _this.direction = new Vector2_1.default(1, 0);
+    _this.width = 150;
+    return _this;
   }
 
-  LineEmitter.prototype.emitParticles = function (num) {
+  LineEmitter.prototype.setNewParticlesPos = function (num) {
+    // console.log("setting particles position");
     for (var i = 0; i < num; i++) {
-      // const p = <Particle>PIXI.Sprite.from("snowflake.png"); // as Particle;
       var p = new Particle_1.default();
-      p.anchor.set(0.5);
-      p.scale.set(0.04);
-      p.tint = 0xffffff;
-      this.rand_vel_amount;
-      var new_vel = this.emit_vel.clone();
-      var rand_vel = new Vector2_1.default(Math.random() * 2 - 1, Math.random() * 2 - 1);
-      rand_vel.normalize();
-      rand_vel.multScalar(this.rand_vel_amount * Math.random());
-      new_vel.add(rand_vel);
-      p.velocity = new_vel;
-      var emitter_pos = this.position.clone();
-      p.position.set(emitter_pos.x, emitter_pos.y);
-      p.texture = this.textures[0];
+      var rand_val = Math.random();
+      var p_pos = this.position.clone();
+      var dir_c = this.direction.clone();
+      p_pos.add(dir_c.multScalar(rand_val * this.width));
+      p.position.set(p_pos.x, p_pos.y);
       this.particles.push(p);
-    }
-
-    this.pixi_container.removeChildren();
-
-    for (var _i = 0, _a = this.particles; _i < _a.length; _i++) {
-      var p = _a[_i];
-      this.pixi_container.addChild(p);
     }
   };
 
@@ -49339,7 +49644,100 @@ function (_super) {
 }(ParticleEmitter);
 
 exports.LineEmitter = LineEmitter;
-},{"./Particle":"modules/Particle.ts","./Vector2":"modules/Vector2.ts","pixi.js":"../node_modules/pixi.js/lib/pixi.es.js","./Utils":"modules/Utils.ts"}],"modules/ParticleSystem.ts":[function(require,module,exports) {
+},{"./Particle":"modules/Particle.ts","./Vector2":"modules/Vector2.ts","pixi.js":"../node_modules/pixi.js/lib/pixi.es.js","./Utils":"modules/Utils.ts","./GradientRamp":"modules/GradientRamp.ts"}],"modules/ParticleForce.ts":[function(require,module,exports) {
+"use strict";
+
+var __extends = this && this.__extends || function () {
+  var _extendStatics = function extendStatics(d, b) {
+    _extendStatics = Object.setPrototypeOf || {
+      __proto__: []
+    } instanceof Array && function (d, b) {
+      d.__proto__ = b;
+    } || function (d, b) {
+      for (var p in b) {
+        if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p];
+      }
+    };
+
+    return _extendStatics(d, b);
+  };
+
+  return function (d, b) {
+    _extendStatics(d, b);
+
+    function __() {
+      this.constructor = d;
+    }
+
+    d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+  };
+}();
+
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.ParticleForceDirectional = void 0;
+
+var Vector2_1 = __importDefault(require("./Vector2"));
+
+var ParticleForceBase =
+/** @class */
+function () {
+  function ParticleForceBase() {}
+
+  ParticleForceBase.prototype.update = function (p) {
+    return null;
+  };
+
+  return ParticleForceBase;
+}();
+
+exports.default = ParticleForceBase;
+
+var ParticleForceDirectional =
+/** @class */
+function (_super) {
+  __extends(ParticleForceDirectional, _super);
+
+  function ParticleForceDirectional() {
+    var _this = _super.call(this) || this;
+
+    _this.setDirection(new Vector2_1.default(0, 60));
+
+    _this.dir_normalized = _this.direction.clone().normalize();
+    _this.treat_as_wind = true;
+    return _this;
+  }
+
+  ParticleForceDirectional.prototype.setDirection = function (dir) {
+    this.direction = dir;
+    this.dir_normalized = dir.clone().normalize();
+  };
+
+  ParticleForceDirectional.prototype.update = function (p) {
+    if (this.treat_as_wind) {
+      var f = this.direction.clone().subtract(p.velocity); // console.log(delta);
+
+      p.velocity.add(f.multScalar(0.001 * (1.0 / (p.mass * p.mass))).mult(this.dir_normalized));
+    } else {
+      p.velocity.add(this.direction);
+    } // console.log(vel.y);
+
+
+    return p.velocity;
+  };
+
+  return ParticleForceDirectional;
+}(ParticleForceBase);
+
+exports.ParticleForceDirectional = ParticleForceDirectional;
+},{"./Vector2":"modules/Vector2.ts"}],"modules/ParticleSystem.ts":[function(require,module,exports) {
 "use strict";
 
 var __importDefault = this && this.__importDefault || function (mod) {
@@ -49356,6 +49754,8 @@ var Clock_1 = __importDefault(require("./Clock"));
 
 var ParticleEmitter_1 = require("./ParticleEmitter");
 
+var ParticleForce_1 = require("./ParticleForce");
+
 var ParticleSystem =
 /** @class */
 function () {
@@ -49363,10 +49763,14 @@ function () {
     // super();
     // this.autoResize = true;
     this.emitters = Array();
-    this.emitters.push(new ParticleEmitter_1.LineEmitter()); // this.emitters[0].position.x = 250;
+    var line_emitter = new ParticleEmitter_1.LineEmitter();
+    line_emitter.width = 250;
+    this.emitters.push(line_emitter); // this.emitters[0].position.x = 250;
     // this.emitters[0].position.y = 100;
 
     this.forces = [];
+    var gravity = new ParticleForce_1.ParticleForceDirectional();
+    this.forces.push(gravity);
     this.clock = new Clock_1.default();
   }
 
@@ -49383,7 +49787,7 @@ function () {
 }();
 
 exports.default = ParticleSystem;
-},{"./Clock":"modules/Clock.ts","./ParticleEmitter":"modules/ParticleEmitter.ts"}],"../node_modules/noisejs/index.js":[function(require,module,exports) {
+},{"./Clock":"modules/Clock.ts","./ParticleEmitter":"modules/ParticleEmitter.ts","./ParticleForce":"modules/ParticleForce.ts"}],"../node_modules/noisejs/index.js":[function(require,module,exports) {
 var global = arguments[3];
 /*
  * A speed-improved perlin and simplex noise algorithms for 2D.
@@ -49730,12 +50134,6 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
-
-function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
-
-function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
 var noise = new _noisejs.Noise(Math.random());
 console.log(noise); // window.ParticleSystem = ParticleSystem;
 
@@ -49751,43 +50149,29 @@ var ps = new _ParticleSystem.default();
 var blur = new PIXI.filters.BlurFilter(); // ps.emitters[0].pixi_container.filters = [blur];
 
 app.stage.addChild(ps.emitters[0].pixi_container);
-ps.emitters[0].startEmission();
+ps.emitters[0].startEmission(); // setTimeout(() => {
+//   ps.emitters[0].stopEmission();
+// }, 2000);
+// pixi_canvas.addEventListener("mousedown", () => {
+//   ps.emitters[0].startEmission();
+// });
+// pixi_canvas.addEventListener("mouseup", () => {
+//   ps.emitters[0].stopEmission();
+// });
+
 app.ticker.add(function () {
   var angle = ps.clock.millis / 1000 * 2.05;
-  ps.emitters[0].position.x = Math.sin(angle) * 250 + width / 2;
-  ps.emitters[0].position.y = Math.cos(angle) * 250 + height / 2;
+  var line_emitter = ps.emitters[0];
+  line_emitter.width = width * 1.1;
+  line_emitter.position.x = width / 2 - line_emitter.width / 2;
+  line_emitter.position.y = -10; // ps.emitters[0].position.x = Math.sin(angle) * 250 + width / 2;
+  // ps.emitters[0].position.y = Math.cos(angle) * 250 + height / 2;
+
   ps.update(); //   ps.emitters[0].position.x = 0;
   //   ps.emitters[0].position.y = 0;
 
   var delta = ps.clock.getDeltaMillis();
-  var fps = 1000 / delta;
-
-  var _iterator = _createForOfIteratorHelper(ps.emitters),
-      _step;
-
-  try {
-    for (_iterator.s(); !(_step = _iterator.n()).done;) {
-      var emitter = _step.value;
-
-      var _iterator2 = _createForOfIteratorHelper(emitter.particles),
-          _step2;
-
-      try {
-        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-          var p = _step2.value;
-        }
-      } catch (err) {
-        _iterator2.e(err);
-      } finally {
-        _iterator2.f();
-      }
-    } //   blur.blur = 2.5;
-
-  } catch (err) {
-    _iterator.e(err);
-  } finally {
-    _iterator.f();
-  }
+  var fps = 1000 / delta; //   blur.blur = 2.5;
 }); // function animate() {
 //   //   ctx.fillText(Math.floor(fps), 10, 20);
 //   requestAnimationFrame(animate);
@@ -49821,7 +50205,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54586" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64599" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
