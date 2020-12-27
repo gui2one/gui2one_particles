@@ -9,7 +9,7 @@ export default class ParticleEmitter {
   position: Vector2;
   particles: Particle[];
   amount_per_second: number;
-  limit_num: number = 5000;
+  limit_num: number = 2000;
 
   emit_vel: Vector2;
   rand_vel_amount: number = 10.0;
@@ -21,8 +21,6 @@ export default class ParticleEmitter {
   scale_over_life: FloatGradientRamp;
   color_over_life: ColorGradientRamp;
 
-  rotation_speed: number = 0.2;
-
   constructor() {
     this.pixi_container = new PIXI.Container();
     // this.pixi_container.autoResize = true;
@@ -30,7 +28,7 @@ export default class ParticleEmitter {
     this.textures = [];
 
     var img = new Image();
-    img.src = "snowflake.png";
+    img.src = "snowflake_small.png";
     var base = new PIXI.BaseTexture(img);
 
     this.textures.push(new PIXI.Texture(base)); // return you the texture
@@ -58,9 +56,9 @@ export default class ParticleEmitter {
       // const p = <Particle>PIXI.Sprite.from("snowflake.png"); // as Particle;
       let p = this.particles[this.particles.length - 1 - i];
       p.anchor.set(0.5);
-      p.scale.set(fit_range(Math.random(), 0, 1, 0.1, 0.04));
+      p.scale.set(fit_range(Math.random(), 0, 1, 0.2, 0.08));
       p.mass = fit_range(Math.random(), 0, 1, 0.1, 1.0);
-      p.tint = 0xffffff;
+      p.tint = 0xff0000;
 
       this.rand_vel_amount;
       let new_vel = this.emit_vel.clone();
@@ -73,6 +71,9 @@ export default class ParticleEmitter {
       p.velocity = new_vel;
       let emitter_pos = this.position.clone();
 
+      p.rotation_speed = Math.random();
+      p.rotate_clockwise = Math.random() > 0.5;
+      p.life = 15.0;
       p.texture = this.textures[0];
     }
 
@@ -128,10 +129,18 @@ export default class ParticleEmitter {
       p.age += delta_time;
 
       // rotation
-      p.rotation += delta_time * this.rotation_speed;
+      p.rotation += delta_time * p.rotation_speed * (p.rotate_clockwise ? 1 : -1);
       let scale_now = this.scale_over_life.getValueAt(clamp(p.age / p.life, 0, 1));
       // let scale = fit_range(p.age, 0, p.life, 0.1, 0.02);
       p.scale.set(p.scale.x * scale_now, p.scale.y * scale_now);
+
+      let clr = this.color_over_life.getValueAt(p.age / p.life);
+      clr.r = Math.round(clr.r * 255);
+      clr.g = Math.round(clr.g * 255);
+      clr.b = Math.round(clr.b * 255);
+      p.tint = (clr.r << 16) + (clr.g << 8) + (clr.b << 0);
+      // console.log(p.tint);
+
       p.alpha = fit_range(p.age, 0, p.life, 1.0, 0.0);
       if (p.age > p.life) p.dead = true;
       p.position.set(p.position.x + vel.x * delta_time, p.position.y + vel.y * delta_time);

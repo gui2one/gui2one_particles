@@ -1,7 +1,8 @@
-import { fit_range, clamp, lerp } from "./Utils";
+import { fit_range, clamp, lerp, interpolate } from "./Utils";
 
 export default class GradientRampBase {
   protected keys: GradientKeyBase[];
+  interpolation_type: string = "linear";
   constructor() {}
 
   getValueAt(pos: number): any {
@@ -20,13 +21,13 @@ export default class GradientRampBase {
     //get pos relative to key1 and key2
     let pos_interp = fit_range(pos - key1.pos, 0, key2.pos - key1.pos, 0, 1);
     if (this instanceof FloatGradientRamp) {
-      let interp = lerp(pos_interp, key1.value, key2.value);
+      let interp = interpolate(this.interpolation_type, pos_interp, key1.value, key2.value);
       return interp;
     } else if (this instanceof ColorGradientRamp) {
-      let interp_r = lerp(pos_interp, key1.value.r, key2.value.r);
-      let interp_g = lerp(pos_interp, key1.value.g, key2.value.g);
-      let interp_b = lerp(pos_interp, key1.value.b, key2.value.b);
-      let interp_a = lerp(pos_interp, key1.value.a, key2.value.a);
+      let interp_r = interpolate(this.interpolation_type, pos_interp, key1.value.r, key2.value.r);
+      let interp_g = interpolate(this.interpolation_type, pos_interp, key1.value.g, key2.value.g);
+      let interp_b = interpolate(this.interpolation_type, pos_interp, key1.value.b, key2.value.b);
+      let interp_a = interpolate(this.interpolation_type, pos_interp, key1.value.a, key2.value.a);
 
       return { r: interp_r, g: interp_g, b: interp_b, a: interp_a };
     }
@@ -101,12 +102,12 @@ export class ColorGradientRamp extends GradientRampBase {
 
     const key_start = new ColorGradientKey();
     key_start.pos = 0.0;
-    key_start.value = { r: 1, g: 1, b: 0, a: 1 };
+    key_start.value = { r: 1, g: 1, b: 1, a: 1 };
     this.keys.push(key_start);
 
     const key_end = new ColorGradientKey();
     key_end.pos = 1.0;
-    key_end.value = { r: 1, g: 0, b: 1, a: 1 };
+    key_end.value = { r: 1, g: 1, b: 1, a: 1 };
     this.keys.push(key_end);
 
     this.sortKeys();

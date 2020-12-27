@@ -1,0 +1,18 @@
+html,
+body {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  // background: linear-gradient(0deg, black, blue);
+  background-color: brown;
+}
+canvas {
+  display: block;
+  padding: 0;
+  margin: 0;
+
+  background: linear-gradient(0deg, black 50%, rgb(10, 10, 49) 150%);
+}

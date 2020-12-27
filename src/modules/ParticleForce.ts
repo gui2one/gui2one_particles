@@ -1,6 +1,6 @@
 import Particle from "./Particle";
 import Vector2 from "./Vector2";
-
+import { fit_range } from "./Utils";
 export default class ParticleForceBase {
   constructor() {}
 
@@ -35,6 +35,29 @@ export class ParticleForceDirectional extends ParticleForceBase {
       p.velocity.add(this.direction);
     }
     // console.log(vel.y);
+
+    return p.velocity;
+  }
+}
+
+export class ParticleForcePoint extends ParticleForceBase {
+  position: Vector2 = new Vector2();
+  power: number = 1.0;
+  constructor() {
+    super();
+  }
+
+  update(p: Particle): Vector2 {
+    let dist = this.position.clone().subtract(new Vector2(p.position.x, p.position.y)).mag();
+    // console.log(dist);
+    let effect = fit_range(dist, 0, 500, 0, 1);
+    p.velocity.add(
+      this.position
+        .clone()
+        .subtract(new Vector2(p.position.x, p.position.y))
+        .multScalar((50 * 1) / (dist * dist))
+        .multScalar(-1 * this.power)
+    );
 
     return p.velocity;
   }

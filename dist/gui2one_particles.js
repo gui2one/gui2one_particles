@@ -117,7 +117,7 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"modules/Clock.ts":[function(require,module,exports) {
+})({"Clock.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -172,7 +172,7 @@ function () {
 }();
 
 exports.default = Clock;
-},{}],"modules/Vector2.ts":[function(require,module,exports) {
+},{}],"Vector2.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -243,7 +243,7 @@ function () {
 }();
 
 exports.default = Vector2;
-},{}],"../node_modules/es6-promise-polyfill/promise.js":[function(require,module,exports) {
+},{}],"../../node_modules/es6-promise-polyfill/promise.js":[function(require,module,exports) {
 var global = arguments[3];
 var define;
 (function(global){
@@ -593,7 +593,7 @@ Promise.reject = function(reason){
 
 })(typeof window != 'undefined' ? window : typeof global != 'undefined' ? global : typeof self != 'undefined' ? self : this);
 
-},{}],"../node_modules/object-assign/index.js":[function(require,module,exports) {
+},{}],"../../node_modules/object-assign/index.js":[function(require,module,exports) {
 /*
 object-assign
 (c) Sindre Sorhus
@@ -689,7 +689,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
   return to;
 };
-},{}],"../node_modules/@pixi/polyfill/lib/polyfill.es.js":[function(require,module,exports) {
+},{}],"../../node_modules/@pixi/polyfill/lib/polyfill.es.js":[function(require,module,exports) {
 "use strict";
 
 var _es6PromisePolyfill = require("es6-promise-polyfill");
@@ -827,7 +827,7 @@ if (!window.Uint8Array) {
 if (!window.Int32Array) {
   window.Int32Array = Array;
 }
-},{"es6-promise-polyfill":"../node_modules/es6-promise-polyfill/promise.js","object-assign":"../node_modules/object-assign/index.js"}],"../node_modules/ismobilejs/esm/isMobile.js":[function(require,module,exports) {
+},{"es6-promise-polyfill":"../../node_modules/es6-promise-polyfill/promise.js","object-assign":"../../node_modules/object-assign/index.js"}],"../../node_modules/ismobilejs/esm/isMobile.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -937,7 +937,7 @@ function isMobile(param) {
   result.tablet = result.apple.tablet || result.android.tablet || result.windows.tablet;
   return result;
 }
-},{}],"../node_modules/ismobilejs/esm/index.js":[function(require,module,exports) {
+},{}],"../../node_modules/ismobilejs/esm/index.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -967,7 +967,7 @@ Object.keys(_isMobile).forEach(function (key) {
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-},{"./isMobile":"../node_modules/ismobilejs/esm/isMobile.js"}],"../node_modules/@pixi/settings/lib/settings.es.js":[function(require,module,exports) {
+},{"./isMobile":"../../node_modules/ismobilejs/esm/isMobile.js"}],"../../node_modules/@pixi/settings/lib/settings.es.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1281,7 +1281,7 @@ var settings = {
   ROUND_PIXELS: false
 };
 exports.settings = settings;
-},{"ismobilejs":"../node_modules/ismobilejs/esm/index.js"}],"../node_modules/eventemitter3/index.js":[function(require,module,exports) {
+},{"ismobilejs":"../../node_modules/ismobilejs/esm/index.js"}],"../../node_modules/eventemitter3/index.js":[function(require,module,exports) {
 'use strict';
 
 var has = Object.prototype.hasOwnProperty
@@ -1619,7 +1619,7 @@ if ('undefined' !== typeof module) {
   module.exports = EventEmitter;
 }
 
-},{}],"../node_modules/earcut/src/earcut.js":[function(require,module,exports) {
+},{}],"../../node_modules/earcut/src/earcut.js":[function(require,module,exports) {
 'use strict';
 
 module.exports = earcut;
@@ -2300,7 +2300,7 @@ earcut.flatten = function (data) {
     return result;
 };
 
-},{}],"../../../../../Users/Sprayfly/AppData/Roaming/npm/node_modules/parcel/node_modules/node-libs-browser/node_modules/punycode/punycode.js":[function(require,module,exports) {
+},{}],"../../../../../../Users/Sprayfly/AppData/Roaming/npm/node_modules/parcel/node_modules/node-libs-browser/node_modules/punycode/punycode.js":[function(require,module,exports) {
 var global = arguments[3];
 var define;
 /*! https://mths.be/punycode v1.4.1 by @mathias */
@@ -2837,7 +2837,7 @@ var define;
 
 }(this));
 
-},{}],"../../../../../Users/Sprayfly/AppData/Roaming/npm/node_modules/parcel/node_modules/url/util.js":[function(require,module,exports) {
+},{}],"../../../../../../Users/Sprayfly/AppData/Roaming/npm/node_modules/parcel/node_modules/url/util.js":[function(require,module,exports) {
 'use strict';
 
 module.exports = {
@@ -2855,7 +2855,7 @@ module.exports = {
   }
 };
 
-},{}],"../../../../../Users/Sprayfly/AppData/Roaming/npm/node_modules/parcel/node_modules/querystring-es3/decode.js":[function(require,module,exports) {
+},{}],"../../../../../../Users/Sprayfly/AppData/Roaming/npm/node_modules/parcel/node_modules/querystring-es3/decode.js":[function(require,module,exports) {
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -2941,7 +2941,7 @@ module.exports = function (qs, sep, eq, options) {
 var isArray = Array.isArray || function (xs) {
   return Object.prototype.toString.call(xs) === '[object Array]';
 };
-},{}],"../../../../../Users/Sprayfly/AppData/Roaming/npm/node_modules/parcel/node_modules/querystring-es3/encode.js":[function(require,module,exports) {
+},{}],"../../../../../../Users/Sprayfly/AppData/Roaming/npm/node_modules/parcel/node_modules/querystring-es3/encode.js":[function(require,module,exports) {
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -3030,12 +3030,12 @@ var objectKeys = Object.keys || function (obj) {
 
   return res;
 };
-},{}],"../../../../../Users/Sprayfly/AppData/Roaming/npm/node_modules/parcel/node_modules/querystring-es3/index.js":[function(require,module,exports) {
+},{}],"../../../../../../Users/Sprayfly/AppData/Roaming/npm/node_modules/parcel/node_modules/querystring-es3/index.js":[function(require,module,exports) {
 'use strict';
 
 exports.decode = exports.parse = require('./decode');
 exports.encode = exports.stringify = require('./encode');
-},{"./decode":"../../../../../Users/Sprayfly/AppData/Roaming/npm/node_modules/parcel/node_modules/querystring-es3/decode.js","./encode":"../../../../../Users/Sprayfly/AppData/Roaming/npm/node_modules/parcel/node_modules/querystring-es3/encode.js"}],"../../../../../Users/Sprayfly/AppData/Roaming/npm/node_modules/parcel/node_modules/url/url.js":[function(require,module,exports) {
+},{"./decode":"../../../../../../Users/Sprayfly/AppData/Roaming/npm/node_modules/parcel/node_modules/querystring-es3/decode.js","./encode":"../../../../../../Users/Sprayfly/AppData/Roaming/npm/node_modules/parcel/node_modules/querystring-es3/encode.js"}],"../../../../../../Users/Sprayfly/AppData/Roaming/npm/node_modules/parcel/node_modules/url/url.js":[function(require,module,exports) {
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -3769,7 +3769,7 @@ Url.prototype.parseHost = function() {
   if (host) this.hostname = host;
 };
 
-},{"punycode":"../../../../../Users/Sprayfly/AppData/Roaming/npm/node_modules/parcel/node_modules/node-libs-browser/node_modules/punycode/punycode.js","./util":"../../../../../Users/Sprayfly/AppData/Roaming/npm/node_modules/parcel/node_modules/url/util.js","querystring":"../../../../../Users/Sprayfly/AppData/Roaming/npm/node_modules/parcel/node_modules/querystring-es3/index.js"}],"../node_modules/@pixi/constants/lib/constants.es.js":[function(require,module,exports) {
+},{"punycode":"../../../../../../Users/Sprayfly/AppData/Roaming/npm/node_modules/parcel/node_modules/node-libs-browser/node_modules/punycode/punycode.js","./util":"../../../../../../Users/Sprayfly/AppData/Roaming/npm/node_modules/parcel/node_modules/url/util.js","querystring":"../../../../../../Users/Sprayfly/AppData/Roaming/npm/node_modules/parcel/node_modules/querystring-es3/index.js"}],"../../node_modules/@pixi/constants/lib/constants.es.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -4283,7 +4283,7 @@ exports.MSAA_QUALITY = MSAA_QUALITY;
   MSAA_QUALITY[MSAA_QUALITY["MEDIUM"] = 4] = "MEDIUM";
   MSAA_QUALITY[MSAA_QUALITY["HIGH"] = 8] = "HIGH";
 })(MSAA_QUALITY || (exports.MSAA_QUALITY = MSAA_QUALITY = {}));
-},{}],"../node_modules/@pixi/utils/lib/utils.es.js":[function(require,module,exports) {
+},{}],"../../node_modules/@pixi/utils/lib/utils.es.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -5364,7 +5364,7 @@ function getResolutionOfUrl(url, defaultValue) {
  * console.log(PIXI.utils.hex2string(0xff00ff)); // returns: "#ff00ff"
  * @namespace PIXI.utils
  */
-},{"@pixi/settings":"../node_modules/@pixi/settings/lib/settings.es.js","eventemitter3":"../node_modules/eventemitter3/index.js","earcut":"../node_modules/earcut/src/earcut.js","url":"../../../../../Users/Sprayfly/AppData/Roaming/npm/node_modules/parcel/node_modules/url/url.js","@pixi/constants":"../node_modules/@pixi/constants/lib/constants.es.js"}],"../node_modules/@pixi/math/lib/math.es.js":[function(require,module,exports) {
+},{"@pixi/settings":"../../node_modules/@pixi/settings/lib/settings.es.js","eventemitter3":"../../node_modules/eventemitter3/index.js","earcut":"../../node_modules/earcut/src/earcut.js","url":"../../../../../../Users/Sprayfly/AppData/Roaming/npm/node_modules/parcel/node_modules/url/url.js","@pixi/constants":"../../node_modules/@pixi/constants/lib/constants.es.js"}],"../../node_modules/@pixi/math/lib/math.es.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -7702,7 +7702,7 @@ function () {
 
 
 exports.Transform = Transform;
-},{}],"../node_modules/@pixi/display/lib/display.es.js":[function(require,module,exports) {
+},{}],"../../node_modules/@pixi/display/lib/display.es.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -9684,7 +9684,7 @@ function (_super) {
 
 exports.Container = Container;
 Container.prototype.containerUpdateTransform = Container.prototype.updateTransform;
-},{"@pixi/settings":"../node_modules/@pixi/settings/lib/settings.es.js","@pixi/math":"../node_modules/@pixi/math/lib/math.es.js","@pixi/utils":"../node_modules/@pixi/utils/lib/utils.es.js"}],"../node_modules/@pixi/accessibility/lib/accessibility.es.js":[function(require,module,exports) {
+},{"@pixi/settings":"../../node_modules/@pixi/settings/lib/settings.es.js","@pixi/math":"../../node_modules/@pixi/math/lib/math.es.js","@pixi/utils":"../../node_modules/@pixi/utils/lib/utils.es.js"}],"../../node_modules/@pixi/accessibility/lib/accessibility.es.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -10371,7 +10371,7 @@ function () {
 }();
 
 exports.AccessibilityManager = AccessibilityManager;
-},{"@pixi/display":"../node_modules/@pixi/display/lib/display.es.js","@pixi/utils":"../node_modules/@pixi/utils/lib/utils.es.js"}],"../node_modules/@pixi/ticker/lib/ticker.es.js":[function(require,module,exports) {
+},{"@pixi/display":"../../node_modules/@pixi/display/lib/display.es.js","@pixi/utils":"../../node_modules/@pixi/utils/lib/utils.es.js"}],"../../node_modules/@pixi/ticker/lib/ticker.es.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -11358,7 +11358,7 @@ function () {
 }();
 
 exports.TickerPlugin = TickerPlugin;
-},{"@pixi/settings":"../node_modules/@pixi/settings/lib/settings.es.js"}],"../node_modules/@pixi/interaction/lib/interaction.es.js":[function(require,module,exports) {
+},{"@pixi/settings":"../../node_modules/@pixi/settings/lib/settings.es.js"}],"../../node_modules/@pixi/interaction/lib/interaction.es.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -13958,7 +13958,7 @@ function (_super) {
 }(_utils.EventEmitter);
 
 exports.InteractionManager = InteractionManager;
-},{"@pixi/math":"../node_modules/@pixi/math/lib/math.es.js","@pixi/ticker":"../node_modules/@pixi/ticker/lib/ticker.es.js","@pixi/display":"../node_modules/@pixi/display/lib/display.es.js","@pixi/utils":"../node_modules/@pixi/utils/lib/utils.es.js"}],"../node_modules/@pixi/runner/lib/runner.es.js":[function(require,module,exports) {
+},{"@pixi/math":"../../node_modules/@pixi/math/lib/math.es.js","@pixi/ticker":"../../node_modules/@pixi/ticker/lib/ticker.es.js","@pixi/display":"../../node_modules/@pixi/display/lib/display.es.js","@pixi/utils":"../../node_modules/@pixi/utils/lib/utils.es.js"}],"../../node_modules/@pixi/runner/lib/runner.es.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -14195,7 +14195,7 @@ Object.defineProperties(Runner.prototype, {
     value: Runner.prototype.emit
   }
 });
-},{}],"../node_modules/@pixi/core/lib/core.es.js":[function(require,module,exports) {
+},{}],"../../node_modules/@pixi/core/lib/core.es.js":[function(require,module,exports) {
 
 "use strict";
 
@@ -27293,7 +27293,7 @@ function () {
 exports.BatchPluginFactory = BatchPluginFactory;
 var BatchRenderer = BatchPluginFactory.create();
 exports.BatchRenderer = BatchRenderer;
-},{"@pixi/settings":"../node_modules/@pixi/settings/lib/settings.es.js","@pixi/constants":"../node_modules/@pixi/constants/lib/constants.es.js","@pixi/utils":"../node_modules/@pixi/utils/lib/utils.es.js","@pixi/runner":"../node_modules/@pixi/runner/lib/runner.es.js","@pixi/ticker":"../node_modules/@pixi/ticker/lib/ticker.es.js","@pixi/math":"../node_modules/@pixi/math/lib/math.es.js"}],"../node_modules/@pixi/app/lib/app.es.js":[function(require,module,exports) {
+},{"@pixi/settings":"../../node_modules/@pixi/settings/lib/settings.es.js","@pixi/constants":"../../node_modules/@pixi/constants/lib/constants.es.js","@pixi/utils":"../../node_modules/@pixi/utils/lib/utils.es.js","@pixi/runner":"../../node_modules/@pixi/runner/lib/runner.es.js","@pixi/ticker":"../../node_modules/@pixi/ticker/lib/ticker.es.js","@pixi/math":"../../node_modules/@pixi/math/lib/math.es.js"}],"../../node_modules/@pixi/app/lib/app.es.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -27616,7 +27616,7 @@ function () {
 }();
 
 Application.registerPlugin(ResizePlugin);
-},{"@pixi/display":"../node_modules/@pixi/display/lib/display.es.js","@pixi/core":"../node_modules/@pixi/core/lib/core.es.js"}],"../node_modules/@pixi/extract/lib/extract.es.js":[function(require,module,exports) {
+},{"@pixi/display":"../../node_modules/@pixi/display/lib/display.es.js","@pixi/core":"../../node_modules/@pixi/core/lib/core.es.js"}],"../../node_modules/@pixi/extract/lib/extract.es.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -27870,7 +27870,7 @@ function () {
 }();
 
 exports.Extract = Extract;
-},{"@pixi/utils":"../node_modules/@pixi/utils/lib/utils.es.js","@pixi/math":"../node_modules/@pixi/math/lib/math.es.js","@pixi/core":"../node_modules/@pixi/core/lib/core.es.js"}],"../node_modules/parse-uri/index.js":[function(require,module,exports) {
+},{"@pixi/utils":"../../node_modules/@pixi/utils/lib/utils.es.js","@pixi/math":"../../node_modules/@pixi/math/lib/math.es.js","@pixi/core":"../../node_modules/@pixi/core/lib/core.es.js"}],"../../node_modules/parse-uri/index.js":[function(require,module,exports) {
 'use strict';
 
 function parseURI(str, opts) {
@@ -27901,7 +27901,7 @@ function parseURI(str, opts) {
 }
 
 module.exports = parseURI;
-},{}],"../node_modules/mini-signals/lib/mini-signals.js":[function(require,module,exports) {
+},{}],"../../node_modules/mini-signals/lib/mini-signals.js":[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, '__esModule', {
@@ -28068,7 +28068,7 @@ MiniSignal.MiniSignalBinding = MiniSignalBinding;
 exports['default'] = MiniSignal;
 module.exports = exports['default'];
 
-},{}],"../node_modules/resource-loader/dist/resource-loader.esm.js":[function(require,module,exports) {
+},{}],"../../node_modules/resource-loader/dist/resource-loader.esm.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30418,7 +30418,7 @@ Loader.use = function LoaderUseStatic(fn) {
 
   return Loader;
 };
-},{"parse-uri":"../node_modules/parse-uri/index.js","mini-signals":"../node_modules/mini-signals/lib/mini-signals.js"}],"../node_modules/@pixi/loaders/lib/loaders.es.js":[function(require,module,exports) {
+},{"parse-uri":"../../node_modules/parse-uri/index.js","mini-signals":"../../node_modules/mini-signals/lib/mini-signals.js"}],"../../node_modules/@pixi/loaders/lib/loaders.es.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -30813,7 +30813,7 @@ function () {
 }();
 
 exports.AppLoaderPlugin = AppLoaderPlugin;
-},{"resource-loader":"../node_modules/resource-loader/dist/resource-loader.esm.js","@pixi/core":"../node_modules/@pixi/core/lib/core.es.js"}],"../node_modules/@pixi/particles/lib/particles.es.js":[function(require,module,exports) {
+},{"resource-loader":"../../node_modules/resource-loader/dist/resource-loader.esm.js","@pixi/core":"../../node_modules/@pixi/core/lib/core.es.js"}],"../../node_modules/@pixi/particles/lib/particles.es.js":[function(require,module,exports) {
 
 "use strict";
 
@@ -31762,7 +31762,7 @@ function (_super) {
 }(_core.ObjectRenderer);
 
 exports.ParticleRenderer = ParticleRenderer;
-},{"@pixi/constants":"../node_modules/@pixi/constants/lib/constants.es.js","@pixi/display":"../node_modules/@pixi/display/lib/display.es.js","@pixi/utils":"../node_modules/@pixi/utils/lib/utils.es.js","@pixi/core":"../node_modules/@pixi/core/lib/core.es.js","@pixi/math":"../node_modules/@pixi/math/lib/math.es.js"}],"../node_modules/@pixi/graphics/lib/graphics.es.js":[function(require,module,exports) {
+},{"@pixi/constants":"../../node_modules/@pixi/constants/lib/constants.es.js","@pixi/display":"../../node_modules/@pixi/display/lib/display.es.js","@pixi/utils":"../../node_modules/@pixi/utils/lib/utils.es.js","@pixi/core":"../../node_modules/@pixi/core/lib/core.es.js","@pixi/math":"../../node_modules/@pixi/math/lib/math.es.js"}],"../../node_modules/@pixi/graphics/lib/graphics.es.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35653,7 +35653,7 @@ function (_super) {
 }(_display.Container);
 
 exports.Graphics = Graphics;
-},{"@pixi/core":"../node_modules/@pixi/core/lib/core.es.js","@pixi/math":"../node_modules/@pixi/math/lib/math.es.js","@pixi/utils":"../node_modules/@pixi/utils/lib/utils.es.js","@pixi/constants":"../node_modules/@pixi/constants/lib/constants.es.js","@pixi/display":"../node_modules/@pixi/display/lib/display.es.js"}],"../node_modules/@pixi/sprite/lib/sprite.es.js":[function(require,module,exports) {
+},{"@pixi/core":"../../node_modules/@pixi/core/lib/core.es.js","@pixi/math":"../../node_modules/@pixi/math/lib/math.es.js","@pixi/utils":"../../node_modules/@pixi/utils/lib/utils.es.js","@pixi/constants":"../../node_modules/@pixi/constants/lib/constants.es.js","@pixi/display":"../../node_modules/@pixi/display/lib/display.es.js"}],"../../node_modules/@pixi/sprite/lib/sprite.es.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -36331,7 +36331,7 @@ function (_super) {
 }(_display.Container);
 
 exports.Sprite = Sprite;
-},{"@pixi/constants":"../node_modules/@pixi/constants/lib/constants.es.js","@pixi/core":"../node_modules/@pixi/core/lib/core.es.js","@pixi/display":"../node_modules/@pixi/display/lib/display.es.js","@pixi/math":"../node_modules/@pixi/math/lib/math.es.js","@pixi/settings":"../node_modules/@pixi/settings/lib/settings.es.js","@pixi/utils":"../node_modules/@pixi/utils/lib/utils.es.js"}],"../node_modules/@pixi/text/lib/text.es.js":[function(require,module,exports) {
+},{"@pixi/constants":"../../node_modules/@pixi/constants/lib/constants.es.js","@pixi/core":"../../node_modules/@pixi/core/lib/core.es.js","@pixi/display":"../../node_modules/@pixi/display/lib/display.es.js","@pixi/math":"../../node_modules/@pixi/math/lib/math.es.js","@pixi/settings":"../../node_modules/@pixi/settings/lib/settings.es.js","@pixi/utils":"../../node_modules/@pixi/utils/lib/utils.es.js"}],"../../node_modules/@pixi/text/lib/text.es.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -38597,7 +38597,7 @@ function (_super) {
 }(_sprite.Sprite);
 
 exports.Text = Text;
-},{"@pixi/sprite":"../node_modules/@pixi/sprite/lib/sprite.es.js","@pixi/core":"../node_modules/@pixi/core/lib/core.es.js","@pixi/settings":"../node_modules/@pixi/settings/lib/settings.es.js","@pixi/math":"../node_modules/@pixi/math/lib/math.es.js","@pixi/utils":"../node_modules/@pixi/utils/lib/utils.es.js"}],"../node_modules/@pixi/prepare/lib/prepare.es.js":[function(require,module,exports) {
+},{"@pixi/sprite":"../../node_modules/@pixi/sprite/lib/sprite.es.js","@pixi/core":"../../node_modules/@pixi/core/lib/core.es.js","@pixi/settings":"../../node_modules/@pixi/settings/lib/settings.es.js","@pixi/math":"../../node_modules/@pixi/math/lib/math.es.js","@pixi/utils":"../../node_modules/@pixi/utils/lib/utils.es.js"}],"../../node_modules/@pixi/prepare/lib/prepare.es.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -39378,7 +39378,7 @@ function () {
 }();
 
 exports.TimeLimiter = TimeLimiter;
-},{"@pixi/settings":"../node_modules/@pixi/settings/lib/settings.es.js","@pixi/core":"../node_modules/@pixi/core/lib/core.es.js","@pixi/graphics":"../node_modules/@pixi/graphics/lib/graphics.es.js","@pixi/ticker":"../node_modules/@pixi/ticker/lib/ticker.es.js","@pixi/display":"../node_modules/@pixi/display/lib/display.es.js","@pixi/text":"../node_modules/@pixi/text/lib/text.es.js"}],"../node_modules/@pixi/spritesheet/lib/spritesheet.es.js":[function(require,module,exports) {
+},{"@pixi/settings":"../../node_modules/@pixi/settings/lib/settings.es.js","@pixi/core":"../../node_modules/@pixi/core/lib/core.es.js","@pixi/graphics":"../../node_modules/@pixi/graphics/lib/graphics.es.js","@pixi/ticker":"../../node_modules/@pixi/ticker/lib/ticker.es.js","@pixi/display":"../../node_modules/@pixi/display/lib/display.es.js","@pixi/text":"../../node_modules/@pixi/text/lib/text.es.js"}],"../../node_modules/@pixi/spritesheet/lib/spritesheet.es.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -39788,7 +39788,7 @@ function () {
 }();
 
 exports.SpritesheetLoader = SpritesheetLoader;
-},{"@pixi/math":"../node_modules/@pixi/math/lib/math.es.js","@pixi/core":"../node_modules/@pixi/core/lib/core.es.js","@pixi/utils":"../node_modules/@pixi/utils/lib/utils.es.js","@pixi/loaders":"../node_modules/@pixi/loaders/lib/loaders.es.js"}],"../node_modules/@pixi/sprite-tiling/lib/sprite-tiling.es.js":[function(require,module,exports) {
+},{"@pixi/math":"../../node_modules/@pixi/math/lib/math.es.js","@pixi/core":"../../node_modules/@pixi/core/lib/core.es.js","@pixi/utils":"../../node_modules/@pixi/utils/lib/utils.es.js","@pixi/loaders":"../../node_modules/@pixi/loaders/lib/loaders.es.js"}],"../../node_modules/@pixi/sprite-tiling/lib/sprite-tiling.es.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -40282,7 +40282,7 @@ function (_super) {
 }(_core.ObjectRenderer);
 
 exports.TilingSpriteRenderer = TilingSpriteRenderer;
-},{"@pixi/core":"../node_modules/@pixi/core/lib/core.es.js","@pixi/math":"../node_modules/@pixi/math/lib/math.es.js","@pixi/sprite":"../node_modules/@pixi/sprite/lib/sprite.es.js","@pixi/utils":"../node_modules/@pixi/utils/lib/utils.es.js","@pixi/constants":"../node_modules/@pixi/constants/lib/constants.es.js"}],"../node_modules/@pixi/mesh/lib/mesh.es.js":[function(require,module,exports) {
+},{"@pixi/core":"../../node_modules/@pixi/core/lib/core.es.js","@pixi/math":"../../node_modules/@pixi/math/lib/math.es.js","@pixi/sprite":"../../node_modules/@pixi/sprite/lib/sprite.es.js","@pixi/utils":"../../node_modules/@pixi/utils/lib/utils.es.js","@pixi/constants":"../../node_modules/@pixi/constants/lib/constants.es.js"}],"../../node_modules/@pixi/mesh/lib/mesh.es.js":[function(require,module,exports) {
 
 "use strict";
 
@@ -41126,7 +41126,7 @@ function (_super) {
 }(_core.Geometry);
 
 exports.MeshGeometry = MeshGeometry;
-},{"@pixi/core":"../node_modules/@pixi/core/lib/core.es.js","@pixi/math":"../node_modules/@pixi/math/lib/math.es.js","@pixi/constants":"../node_modules/@pixi/constants/lib/constants.es.js","@pixi/display":"../node_modules/@pixi/display/lib/display.es.js","@pixi/settings":"../node_modules/@pixi/settings/lib/settings.es.js","@pixi/utils":"../node_modules/@pixi/utils/lib/utils.es.js"}],"../node_modules/@pixi/text-bitmap/lib/text-bitmap.es.js":[function(require,module,exports) {
+},{"@pixi/core":"../../node_modules/@pixi/core/lib/core.es.js","@pixi/math":"../../node_modules/@pixi/math/lib/math.es.js","@pixi/constants":"../../node_modules/@pixi/constants/lib/constants.es.js","@pixi/display":"../../node_modules/@pixi/display/lib/display.es.js","@pixi/settings":"../../node_modules/@pixi/settings/lib/settings.es.js","@pixi/utils":"../../node_modules/@pixi/utils/lib/utils.es.js"}],"../../node_modules/@pixi/text-bitmap/lib/text-bitmap.es.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -43206,7 +43206,7 @@ function () {
 }();
 
 exports.BitmapFontLoader = BitmapFontLoader;
-},{"@pixi/math":"../node_modules/@pixi/math/lib/math.es.js","@pixi/settings":"../node_modules/@pixi/settings/lib/settings.es.js","@pixi/mesh":"../node_modules/@pixi/mesh/lib/mesh.es.js","@pixi/utils":"../node_modules/@pixi/utils/lib/utils.es.js","@pixi/core":"../node_modules/@pixi/core/lib/core.es.js","@pixi/text":"../node_modules/@pixi/text/lib/text.es.js","@pixi/display":"../node_modules/@pixi/display/lib/display.es.js","@pixi/loaders":"../node_modules/@pixi/loaders/lib/loaders.es.js"}],"../node_modules/@pixi/filter-alpha/lib/filter-alpha.es.js":[function(require,module,exports) {
+},{"@pixi/math":"../../node_modules/@pixi/math/lib/math.es.js","@pixi/settings":"../../node_modules/@pixi/settings/lib/settings.es.js","@pixi/mesh":"../../node_modules/@pixi/mesh/lib/mesh.es.js","@pixi/utils":"../../node_modules/@pixi/utils/lib/utils.es.js","@pixi/core":"../../node_modules/@pixi/core/lib/core.es.js","@pixi/text":"../../node_modules/@pixi/text/lib/text.es.js","@pixi/display":"../../node_modules/@pixi/display/lib/display.es.js","@pixi/loaders":"../../node_modules/@pixi/loaders/lib/loaders.es.js"}],"../../node_modules/@pixi/filter-alpha/lib/filter-alpha.es.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -43327,7 +43327,7 @@ function (_super) {
 }(_core.Filter);
 
 exports.AlphaFilter = AlphaFilter;
-},{"@pixi/core":"../node_modules/@pixi/core/lib/core.es.js"}],"../node_modules/@pixi/filter-blur/lib/filter-blur.es.js":[function(require,module,exports) {
+},{"@pixi/core":"../../node_modules/@pixi/core/lib/core.es.js"}],"../../node_modules/@pixi/filter-blur/lib/filter-blur.es.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -44269,7 +44269,7 @@ function (_super) {
 }(_core.Filter);
 
 exports.BlurFilter = BlurFilter;
-},{"@pixi/core":"../node_modules/@pixi/core/lib/core.es.js","@pixi/settings":"../node_modules/@pixi/settings/lib/settings.es.js"}],"../node_modules/@pixi/filter-color-matrix/lib/filter-color-matrix.es.js":[function(require,module,exports) {
+},{"@pixi/core":"../../node_modules/@pixi/core/lib/core.es.js","@pixi/settings":"../../node_modules/@pixi/settings/lib/settings.es.js"}],"../../node_modules/@pixi/filter-color-matrix/lib/filter-color-matrix.es.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -44810,7 +44810,7 @@ function (_super) {
 
 exports.ColorMatrixFilter = ColorMatrixFilter;
 ColorMatrixFilter.prototype.grayscale = ColorMatrixFilter.prototype.greyscale;
-},{"@pixi/core":"../node_modules/@pixi/core/lib/core.es.js"}],"../node_modules/@pixi/filter-displacement/lib/filter-displacement.es.js":[function(require,module,exports) {
+},{"@pixi/core":"../../node_modules/@pixi/core/lib/core.es.js"}],"../../node_modules/@pixi/filter-displacement/lib/filter-displacement.es.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -44982,7 +44982,7 @@ function (_super) {
 }(_core.Filter);
 
 exports.DisplacementFilter = DisplacementFilter;
-},{"@pixi/core":"../node_modules/@pixi/core/lib/core.es.js","@pixi/math":"../node_modules/@pixi/math/lib/math.es.js"}],"../node_modules/@pixi/filter-fxaa/lib/filter-fxaa.es.js":[function(require,module,exports) {
+},{"@pixi/core":"../../node_modules/@pixi/core/lib/core.es.js","@pixi/math":"../../node_modules/@pixi/math/lib/math.es.js"}],"../../node_modules/@pixi/filter-fxaa/lib/filter-fxaa.es.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45070,7 +45070,7 @@ function (_super) {
 }(_core.Filter);
 
 exports.FXAAFilter = FXAAFilter;
-},{"@pixi/core":"../node_modules/@pixi/core/lib/core.es.js"}],"../node_modules/@pixi/filter-noise/lib/filter-noise.es.js":[function(require,module,exports) {
+},{"@pixi/core":"../../node_modules/@pixi/core/lib/core.es.js"}],"../../node_modules/@pixi/filter-noise/lib/filter-noise.es.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45208,7 +45208,7 @@ function (_super) {
 }(_core.Filter);
 
 exports.NoiseFilter = NoiseFilter;
-},{"@pixi/core":"../node_modules/@pixi/core/lib/core.es.js"}],"../node_modules/@pixi/mixin-cache-as-bitmap/lib/mixin-cache-as-bitmap.es.js":[function(require,module,exports) {
+},{"@pixi/core":"../../node_modules/@pixi/core/lib/core.es.js"}],"../../node_modules/@pixi/mixin-cache-as-bitmap/lib/mixin-cache-as-bitmap.es.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -45599,7 +45599,7 @@ _display.DisplayObject.prototype._cacheAsBitmapDestroy = function _cacheAsBitmap
   this.cacheAsBitmap = false;
   this.destroy(options);
 };
-},{"@pixi/core":"../node_modules/@pixi/core/lib/core.es.js","@pixi/sprite":"../node_modules/@pixi/sprite/lib/sprite.es.js","@pixi/display":"../node_modules/@pixi/display/lib/display.es.js","@pixi/math":"../node_modules/@pixi/math/lib/math.es.js","@pixi/utils":"../node_modules/@pixi/utils/lib/utils.es.js","@pixi/settings":"../node_modules/@pixi/settings/lib/settings.es.js"}],"../node_modules/@pixi/mixin-get-child-by-name/lib/mixin-get-child-by-name.es.js":[function(require,module,exports) {
+},{"@pixi/core":"../../node_modules/@pixi/core/lib/core.es.js","@pixi/sprite":"../../node_modules/@pixi/sprite/lib/sprite.es.js","@pixi/display":"../../node_modules/@pixi/display/lib/display.es.js","@pixi/math":"../../node_modules/@pixi/math/lib/math.es.js","@pixi/utils":"../../node_modules/@pixi/utils/lib/utils.es.js","@pixi/settings":"../../node_modules/@pixi/settings/lib/settings.es.js"}],"../../node_modules/@pixi/mixin-get-child-by-name/lib/mixin-get-child-by-name.es.js":[function(require,module,exports) {
 "use strict";
 
 var _display = require("@pixi/display");
@@ -45656,7 +45656,7 @@ _display.Container.prototype.getChildByName = function getChildByName(name, deep
 
   return null;
 };
-},{"@pixi/display":"../node_modules/@pixi/display/lib/display.es.js"}],"../node_modules/@pixi/mixin-get-global-position/lib/mixin-get-global-position.es.js":[function(require,module,exports) {
+},{"@pixi/display":"../../node_modules/@pixi/display/lib/display.es.js"}],"../../node_modules/@pixi/mixin-get-global-position/lib/mixin-get-global-position.es.js":[function(require,module,exports) {
 "use strict";
 
 var _display = require("@pixi/display");
@@ -45700,7 +45700,7 @@ _display.DisplayObject.prototype.getGlobalPosition = function getGlobalPosition(
 
   return point;
 };
-},{"@pixi/display":"../node_modules/@pixi/display/lib/display.es.js","@pixi/math":"../node_modules/@pixi/math/lib/math.es.js"}],"../node_modules/@pixi/mesh-extras/lib/mesh-extras.es.js":[function(require,module,exports) {
+},{"@pixi/display":"../../node_modules/@pixi/display/lib/display.es.js","@pixi/math":"../../node_modules/@pixi/math/lib/math.es.js"}],"../../node_modules/@pixi/mesh-extras/lib/mesh-extras.es.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -46616,7 +46616,7 @@ function (_super) {
 }(SimplePlane);
 
 exports.NineSlicePlane = NineSlicePlane;
-},{"@pixi/mesh":"../node_modules/@pixi/mesh/lib/mesh.es.js","@pixi/constants":"../node_modules/@pixi/constants/lib/constants.es.js","@pixi/core":"../node_modules/@pixi/core/lib/core.es.js"}],"../node_modules/@pixi/sprite-animated/lib/sprite-animated.es.js":[function(require,module,exports) {
+},{"@pixi/mesh":"../../node_modules/@pixi/mesh/lib/mesh.es.js","@pixi/constants":"../../node_modules/@pixi/constants/lib/constants.es.js","@pixi/core":"../../node_modules/@pixi/core/lib/core.es.js"}],"../../node_modules/@pixi/sprite-animated/lib/sprite-animated.es.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -47178,7 +47178,7 @@ function (_super) {
 
 
 exports.AnimatedSprite = AnimatedSprite;
-},{"@pixi/core":"../node_modules/@pixi/core/lib/core.es.js","@pixi/sprite":"../node_modules/@pixi/sprite/lib/sprite.es.js","@pixi/ticker":"../node_modules/@pixi/ticker/lib/ticker.es.js"}],"../node_modules/pixi.js/lib/pixi.es.js":[function(require,module,exports) {
+},{"@pixi/core":"../../node_modules/@pixi/core/lib/core.es.js","@pixi/sprite":"../../node_modules/@pixi/sprite/lib/sprite.es.js","@pixi/ticker":"../../node_modules/@pixi/ticker/lib/ticker.es.js"}],"../../node_modules/pixi.js/lib/pixi.es.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -49035,7 +49035,7 @@ var filters = {
   NoiseFilter: _filterNoise.NoiseFilter
 };
 exports.filters = filters;
-},{"@pixi/polyfill":"../node_modules/@pixi/polyfill/lib/polyfill.es.js","@pixi/utils":"../node_modules/@pixi/utils/lib/utils.es.js","@pixi/accessibility":"../node_modules/@pixi/accessibility/lib/accessibility.es.js","@pixi/interaction":"../node_modules/@pixi/interaction/lib/interaction.es.js","@pixi/app":"../node_modules/@pixi/app/lib/app.es.js","@pixi/core":"../node_modules/@pixi/core/lib/core.es.js","@pixi/extract":"../node_modules/@pixi/extract/lib/extract.es.js","@pixi/loaders":"../node_modules/@pixi/loaders/lib/loaders.es.js","@pixi/particles":"../node_modules/@pixi/particles/lib/particles.es.js","@pixi/prepare":"../node_modules/@pixi/prepare/lib/prepare.es.js","@pixi/spritesheet":"../node_modules/@pixi/spritesheet/lib/spritesheet.es.js","@pixi/sprite-tiling":"../node_modules/@pixi/sprite-tiling/lib/sprite-tiling.es.js","@pixi/text-bitmap":"../node_modules/@pixi/text-bitmap/lib/text-bitmap.es.js","@pixi/ticker":"../node_modules/@pixi/ticker/lib/ticker.es.js","@pixi/filter-alpha":"../node_modules/@pixi/filter-alpha/lib/filter-alpha.es.js","@pixi/filter-blur":"../node_modules/@pixi/filter-blur/lib/filter-blur.es.js","@pixi/filter-color-matrix":"../node_modules/@pixi/filter-color-matrix/lib/filter-color-matrix.es.js","@pixi/filter-displacement":"../node_modules/@pixi/filter-displacement/lib/filter-displacement.es.js","@pixi/filter-fxaa":"../node_modules/@pixi/filter-fxaa/lib/filter-fxaa.es.js","@pixi/filter-noise":"../node_modules/@pixi/filter-noise/lib/filter-noise.es.js","@pixi/mixin-cache-as-bitmap":"../node_modules/@pixi/mixin-cache-as-bitmap/lib/mixin-cache-as-bitmap.es.js","@pixi/mixin-get-child-by-name":"../node_modules/@pixi/mixin-get-child-by-name/lib/mixin-get-child-by-name.es.js","@pixi/mixin-get-global-position":"../node_modules/@pixi/mixin-get-global-position/lib/mixin-get-global-position.es.js","@pixi/constants":"../node_modules/@pixi/constants/lib/constants.es.js","@pixi/display":"../node_modules/@pixi/display/lib/display.es.js","@pixi/graphics":"../node_modules/@pixi/graphics/lib/graphics.es.js","@pixi/math":"../node_modules/@pixi/math/lib/math.es.js","@pixi/mesh":"../node_modules/@pixi/mesh/lib/mesh.es.js","@pixi/mesh-extras":"../node_modules/@pixi/mesh-extras/lib/mesh-extras.es.js","@pixi/runner":"../node_modules/@pixi/runner/lib/runner.es.js","@pixi/sprite":"../node_modules/@pixi/sprite/lib/sprite.es.js","@pixi/sprite-animated":"../node_modules/@pixi/sprite-animated/lib/sprite-animated.es.js","@pixi/text":"../node_modules/@pixi/text/lib/text.es.js","@pixi/settings":"../node_modules/@pixi/settings/lib/settings.es.js"}],"modules/Particle.ts":[function(require,module,exports) {
+},{"@pixi/polyfill":"../../node_modules/@pixi/polyfill/lib/polyfill.es.js","@pixi/utils":"../../node_modules/@pixi/utils/lib/utils.es.js","@pixi/accessibility":"../../node_modules/@pixi/accessibility/lib/accessibility.es.js","@pixi/interaction":"../../node_modules/@pixi/interaction/lib/interaction.es.js","@pixi/app":"../../node_modules/@pixi/app/lib/app.es.js","@pixi/core":"../../node_modules/@pixi/core/lib/core.es.js","@pixi/extract":"../../node_modules/@pixi/extract/lib/extract.es.js","@pixi/loaders":"../../node_modules/@pixi/loaders/lib/loaders.es.js","@pixi/particles":"../../node_modules/@pixi/particles/lib/particles.es.js","@pixi/prepare":"../../node_modules/@pixi/prepare/lib/prepare.es.js","@pixi/spritesheet":"../../node_modules/@pixi/spritesheet/lib/spritesheet.es.js","@pixi/sprite-tiling":"../../node_modules/@pixi/sprite-tiling/lib/sprite-tiling.es.js","@pixi/text-bitmap":"../../node_modules/@pixi/text-bitmap/lib/text-bitmap.es.js","@pixi/ticker":"../../node_modules/@pixi/ticker/lib/ticker.es.js","@pixi/filter-alpha":"../../node_modules/@pixi/filter-alpha/lib/filter-alpha.es.js","@pixi/filter-blur":"../../node_modules/@pixi/filter-blur/lib/filter-blur.es.js","@pixi/filter-color-matrix":"../../node_modules/@pixi/filter-color-matrix/lib/filter-color-matrix.es.js","@pixi/filter-displacement":"../../node_modules/@pixi/filter-displacement/lib/filter-displacement.es.js","@pixi/filter-fxaa":"../../node_modules/@pixi/filter-fxaa/lib/filter-fxaa.es.js","@pixi/filter-noise":"../../node_modules/@pixi/filter-noise/lib/filter-noise.es.js","@pixi/mixin-cache-as-bitmap":"../../node_modules/@pixi/mixin-cache-as-bitmap/lib/mixin-cache-as-bitmap.es.js","@pixi/mixin-get-child-by-name":"../../node_modules/@pixi/mixin-get-child-by-name/lib/mixin-get-child-by-name.es.js","@pixi/mixin-get-global-position":"../../node_modules/@pixi/mixin-get-global-position/lib/mixin-get-global-position.es.js","@pixi/constants":"../../node_modules/@pixi/constants/lib/constants.es.js","@pixi/display":"../../node_modules/@pixi/display/lib/display.es.js","@pixi/graphics":"../../node_modules/@pixi/graphics/lib/graphics.es.js","@pixi/math":"../../node_modules/@pixi/math/lib/math.es.js","@pixi/mesh":"../../node_modules/@pixi/mesh/lib/mesh.es.js","@pixi/mesh-extras":"../../node_modules/@pixi/mesh-extras/lib/mesh-extras.es.js","@pixi/runner":"../../node_modules/@pixi/runner/lib/runner.es.js","@pixi/sprite":"../../node_modules/@pixi/sprite/lib/sprite.es.js","@pixi/sprite-animated":"../../node_modules/@pixi/sprite-animated/lib/sprite-animated.es.js","@pixi/text":"../../node_modules/@pixi/text/lib/text.es.js","@pixi/settings":"../../node_modules/@pixi/settings/lib/settings.es.js"}],"Particle.ts":[function(require,module,exports) {
 "use strict";
 
 var __extends = this && this.__extends || function () {
@@ -49118,16 +49118,18 @@ function (_super) {
   __extends(Particle, _super);
 
   function Particle() {
-    var _this = _super.call(this) || this; // this.position = new Vector2();
+    var _this = _super.call(this) || this;
 
+    _this.rotation_speed = 1.0; // this.position = new Vector2();
 
     _this.velocity = new Vector2_1.default();
     _this.mass = 1;
 
-    _this.scale.set(10);
+    _this.scale.set(1);
 
     _this.life = 20.0;
     _this.age = 0;
+    _this.rotate_clockwise = true;
     _this.dead = false;
     return _this;
   }
@@ -49136,13 +49138,13 @@ function (_super) {
 }(PIXI.Sprite);
 
 exports.default = Particle;
-},{"./Vector2":"modules/Vector2.ts","pixi.js":"../node_modules/pixi.js/lib/pixi.es.js"}],"modules/Utils.ts":[function(require,module,exports) {
+},{"./Vector2":"Vector2.ts","pixi.js":"../../node_modules/pixi.js/lib/pixi.es.js"}],"Utils.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.lerp = exports.clamp = exports.fit_range = void 0;
+exports.interpolate = exports.slerp = exports.smoothStep = exports.lerp = exports.clamp = exports.fit_range = void 0;
 
 var fit_range = function fit_range(src, src_min, src_max, dst_min, dst_max) {
   src = exports.clamp(src, src_min, src_max);
@@ -49162,7 +49164,40 @@ var lerp = function lerp(ratio, value1, value2) {
 };
 
 exports.lerp = lerp;
-},{}],"modules/GradientRamp.ts":[function(require,module,exports) {
+
+var smoothStep = function smoothStep(ratio) {
+  return ratio * ratio * (1 - ratio / 1.5) * 3;
+};
+
+exports.smoothStep = smoothStep;
+
+var slerp = function slerp(ratio, value1, value2) {
+  return exports.fit_range(exports.smoothStep(ratio), 0, 1, value1, value2);
+};
+
+exports.slerp = slerp;
+
+var interpolate = function interpolate(type, ratio, value1, value2) {
+  var ret = 0;
+
+  switch (type) {
+    case "linear":
+      ret = exports.lerp(ratio, value1, value2);
+      break;
+
+    case "smoothStep":
+      ret = exports.slerp(ratio, value1, value2);
+      break;
+
+    default:
+      break;
+  }
+
+  return ret;
+};
+
+exports.interpolate = interpolate;
+},{}],"GradientRamp.ts":[function(require,module,exports) {
 "use strict";
 
 var __extends = this && this.__extends || function () {
@@ -49204,6 +49239,7 @@ function () {
   function GradientRampBase() {
     var _this = this;
 
+    this.interpolation_type = "linear";
     this.presets = {
       rampUp: function rampUp() {
         console.log("ramp up !!!");
@@ -49249,13 +49285,13 @@ function () {
     var pos_interp = Utils_1.fit_range(pos - key1.pos, 0, key2.pos - key1.pos, 0, 1);
 
     if (this instanceof FloatGradientRamp) {
-      var interp = Utils_1.lerp(pos_interp, key1.value, key2.value);
+      var interp = Utils_1.interpolate(this.interpolation_type, pos_interp, key1.value, key2.value);
       return interp;
     } else if (this instanceof ColorGradientRamp) {
-      var interp_r = Utils_1.lerp(pos_interp, key1.value.r, key2.value.r);
-      var interp_g = Utils_1.lerp(pos_interp, key1.value.g, key2.value.g);
-      var interp_b = Utils_1.lerp(pos_interp, key1.value.b, key2.value.b);
-      var interp_a = Utils_1.lerp(pos_interp, key1.value.a, key2.value.a);
+      var interp_r = Utils_1.interpolate(this.interpolation_type, pos_interp, key1.value.r, key2.value.r);
+      var interp_g = Utils_1.interpolate(this.interpolation_type, pos_interp, key1.value.g, key2.value.g);
+      var interp_b = Utils_1.interpolate(this.interpolation_type, pos_interp, key1.value.b, key2.value.b);
+      var interp_a = Utils_1.interpolate(this.interpolation_type, pos_interp, key1.value.a, key2.value.a);
       return {
         r: interp_r,
         g: interp_g,
@@ -49342,7 +49378,7 @@ function (_super) {
     key_start.value = {
       r: 1,
       g: 1,
-      b: 0,
+      b: 1,
       a: 1
     };
 
@@ -49352,7 +49388,7 @@ function (_super) {
     key_end.pos = 1.0;
     key_end.value = {
       r: 1,
-      g: 0,
+      g: 1,
       b: 1,
       a: 1
     };
@@ -49409,7 +49445,7 @@ function (_super) {
 }(GradientKeyBase);
 
 exports.ColorGradientKey = ColorGradientKey;
-},{"./Utils":"modules/Utils.ts"}],"modules/ParticleEmitter.ts":[function(require,module,exports) {
+},{"./Utils":"Utils.ts"}],"ParticleEmitter.ts":[function(require,module,exports) {
 "use strict";
 
 var __extends = this && this.__extends || function () {
@@ -49497,14 +49533,13 @@ var ParticleEmitter =
 /** @class */
 function () {
   function ParticleEmitter() {
-    this.limit_num = 5000;
+    this.limit_num = 2000;
     this.rand_vel_amount = 10.0;
-    this.rotation_speed = 0.2;
     this.pixi_container = new PIXI.Container(); // this.pixi_container.autoResize = true;
 
     this.textures = [];
     var img = new Image();
-    img.src = "snowflake.png";
+    img.src = "snowflake_small.png";
     var base = new PIXI.BaseTexture(img);
     this.textures.push(new PIXI.Texture(base)); // return you the texture
 
@@ -49528,9 +49563,9 @@ function () {
       // const p = <Particle>PIXI.Sprite.from("snowflake.png"); // as Particle;
       var p = this.particles[this.particles.length - 1 - i];
       p.anchor.set(0.5);
-      p.scale.set(Utils_1.fit_range(Math.random(), 0, 1, 0.1, 0.04));
+      p.scale.set(Utils_1.fit_range(Math.random(), 0, 1, 0.2, 0.08));
       p.mass = Utils_1.fit_range(Math.random(), 0, 1, 0.1, 1.0);
-      p.tint = 0xffffff;
+      p.tint = 0xff0000;
       this.rand_vel_amount;
       var new_vel = this.emit_vel.clone();
       var rand_vel = new Vector2_1.default(Math.random() * 2 - 1, Math.random() * 2 - 1);
@@ -49539,6 +49574,9 @@ function () {
       new_vel.add(rand_vel);
       p.velocity = new_vel;
       var emitter_pos = this.position.clone();
+      p.rotation_speed = Math.random();
+      p.rotate_clockwise = Math.random() > 0.5;
+      p.life = 15.0;
       p.texture = this.textures[0];
     }
 
@@ -49599,10 +49637,16 @@ function () {
 
       p.age += delta_time; // rotation
 
-      p.rotation += delta_time * this.rotation_speed;
+      p.rotation += delta_time * p.rotation_speed * (p.rotate_clockwise ? 1 : -1);
       var scale_now = this.scale_over_life.getValueAt(Utils_1.clamp(p.age / p.life, 0, 1)); // let scale = fit_range(p.age, 0, p.life, 0.1, 0.02);
 
       p.scale.set(p.scale.x * scale_now, p.scale.y * scale_now);
+      var clr = this.color_over_life.getValueAt(p.age / p.life);
+      clr.r = Math.round(clr.r * 255);
+      clr.g = Math.round(clr.g * 255);
+      clr.b = Math.round(clr.b * 255);
+      p.tint = (clr.r << 16) + (clr.g << 8) + (clr.b << 0); // console.log(p.tint);
+
       p.alpha = Utils_1.fit_range(p.age, 0, p.life, 1.0, 0.0);
       if (p.age > p.life) p.dead = true;
       p.position.set(p.position.x + vel.x * delta_time, p.position.y + vel.y * delta_time);
@@ -49644,7 +49688,7 @@ function (_super) {
 }(ParticleEmitter);
 
 exports.LineEmitter = LineEmitter;
-},{"./Particle":"modules/Particle.ts","./Vector2":"modules/Vector2.ts","pixi.js":"../node_modules/pixi.js/lib/pixi.es.js","./Utils":"modules/Utils.ts","./GradientRamp":"modules/GradientRamp.ts"}],"modules/ParticleForce.ts":[function(require,module,exports) {
+},{"./Particle":"Particle.ts","./Vector2":"Vector2.ts","pixi.js":"../../node_modules/pixi.js/lib/pixi.es.js","./Utils":"Utils.ts","./GradientRamp":"GradientRamp.ts"}],"ParticleForce.ts":[function(require,module,exports) {
 "use strict";
 
 var __extends = this && this.__extends || function () {
@@ -49682,9 +49726,11 @@ var __importDefault = this && this.__importDefault || function (mod) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.ParticleForceDirectional = void 0;
+exports.ParticleForcePoint = exports.ParticleForceDirectional = void 0;
 
 var Vector2_1 = __importDefault(require("./Vector2"));
+
+var Utils_1 = require("./Utils");
 
 var ParticleForceBase =
 /** @class */
@@ -49737,8 +49783,604 @@ function (_super) {
 }(ParticleForceBase);
 
 exports.ParticleForceDirectional = ParticleForceDirectional;
-},{"./Vector2":"modules/Vector2.ts"}],"modules/ParticleSystem.ts":[function(require,module,exports) {
+
+var ParticleForcePoint =
+/** @class */
+function (_super) {
+  __extends(ParticleForcePoint, _super);
+
+  function ParticleForcePoint() {
+    var _this = _super.call(this) || this;
+
+    _this.position = new Vector2_1.default();
+    _this.power = 1.0;
+    return _this;
+  }
+
+  ParticleForcePoint.prototype.update = function (p) {
+    var dist = this.position.clone().subtract(new Vector2_1.default(p.position.x, p.position.y)).mag(); // console.log(dist);
+
+    var effect = Utils_1.fit_range(dist, 0, 500, 0, 1);
+    p.velocity.add(this.position.clone().subtract(new Vector2_1.default(p.position.x, p.position.y)).multScalar(50 * 1 / (dist * dist)).multScalar(-1 * this.power));
+    return p.velocity;
+  };
+
+  return ParticleForcePoint;
+}(ParticleForceBase);
+
+exports.ParticleForcePoint = ParticleForcePoint;
+},{"./Vector2":"Vector2.ts","./Utils":"Utils.ts"}],"../../node_modules/@pixi/filter-kawase-blur/lib/filter-kawase-blur.esm.js":[function(require,module,exports) {
 "use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.KawaseBlurFilter = void 0;
+
+var _core = require("@pixi/core");
+
+var _math = require("@pixi/math");
+
+/*!
+ * @pixi/filter-kawase-blur - v3.2.0
+ * Compiled Wed, 23 Dec 2020 00:29:02 UTC
+ *
+ * @pixi/filter-kawase-blur is licensed under the MIT License.
+ * http://www.opensource.org/licenses/mit-license
+ */
+var vertex = "attribute vec2 aVertexPosition;\nattribute vec2 aTextureCoord;\n\nuniform mat3 projectionMatrix;\n\nvarying vec2 vTextureCoord;\n\nvoid main(void)\n{\n    gl_Position = vec4((projectionMatrix * vec3(aVertexPosition, 1.0)).xy, 0.0, 1.0);\n    vTextureCoord = aTextureCoord;\n}";
+var fragment = "\nvarying vec2 vTextureCoord;\nuniform sampler2D uSampler;\n\nuniform vec2 uOffset;\n\nvoid main(void)\n{\n    vec4 color = vec4(0.0);\n\n    // Sample top left pixel\n    color += texture2D(uSampler, vec2(vTextureCoord.x - uOffset.x, vTextureCoord.y + uOffset.y));\n\n    // Sample top right pixel\n    color += texture2D(uSampler, vec2(vTextureCoord.x + uOffset.x, vTextureCoord.y + uOffset.y));\n\n    // Sample bottom right pixel\n    color += texture2D(uSampler, vec2(vTextureCoord.x + uOffset.x, vTextureCoord.y - uOffset.y));\n\n    // Sample bottom left pixel\n    color += texture2D(uSampler, vec2(vTextureCoord.x - uOffset.x, vTextureCoord.y - uOffset.y));\n\n    // Average\n    color *= 0.25;\n\n    gl_FragColor = color;\n}";
+var fragmentClamp = "\nvarying vec2 vTextureCoord;\nuniform sampler2D uSampler;\n\nuniform vec2 uOffset;\nuniform vec4 filterClamp;\n\nvoid main(void)\n{\n    vec4 color = vec4(0.0);\n\n    // Sample top left pixel\n    color += texture2D(uSampler, clamp(vec2(vTextureCoord.x - uOffset.x, vTextureCoord.y + uOffset.y), filterClamp.xy, filterClamp.zw));\n\n    // Sample top right pixel\n    color += texture2D(uSampler, clamp(vec2(vTextureCoord.x + uOffset.x, vTextureCoord.y + uOffset.y), filterClamp.xy, filterClamp.zw));\n\n    // Sample bottom right pixel\n    color += texture2D(uSampler, clamp(vec2(vTextureCoord.x + uOffset.x, vTextureCoord.y - uOffset.y), filterClamp.xy, filterClamp.zw));\n\n    // Sample bottom left pixel\n    color += texture2D(uSampler, clamp(vec2(vTextureCoord.x - uOffset.x, vTextureCoord.y - uOffset.y), filterClamp.xy, filterClamp.zw));\n\n    // Average\n    color *= 0.25;\n\n    gl_FragColor = color;\n}\n";
+/**
+ * A much faster blur than Gaussian blur, but more complicated to use.<br>
+ * ![original](../tools/screenshots/dist/original.png)![filter](../tools/screenshots/dist/kawase-blur.png)
+ *
+ * @see https://software.intel.com/en-us/blogs/2014/07/15/an-investigation-of-fast-real-time-gpu-based-image-blur-algorithms
+ * @class
+ * @extends PIXI.Filter
+ * @memberof PIXI.filters
+ * @see {@link https://www.npmjs.com/package/@pixi/filter-kawase-blur|@pixi/filter-kawase-blur}
+ * @see {@link https://www.npmjs.com/package/pixi-filters|pixi-filters}
+ * @param {number|number[]} [blur=4] - The blur of the filter. Should be greater than `0`. If
+ *        value is an Array, setting kernels.
+ * @param {number} [quality=3] - The quality of the filter. Should be an integer greater than `1`.
+ * @param {boolean} [clamp=false] - Clamp edges, useful for removing dark edges
+ *        from fullscreen filters or bleeding to the edge of filterArea.
+ */
+
+var KawaseBlurFilter = /*@__PURE__*/function (Filter) {
+  function KawaseBlurFilter(blur, quality, clamp) {
+    if (blur === void 0) blur = 4;
+    if (quality === void 0) quality = 3;
+    if (clamp === void 0) clamp = false;
+    Filter.call(this, vertex, clamp ? fragmentClamp : fragment);
+    this.uniforms.uOffset = new Float32Array(2);
+    this._pixelSize = new _math.Point();
+    this.pixelSize = 1;
+    this._clamp = clamp;
+    this._kernels = null; // if `blur` is array , as kernels
+
+    if (Array.isArray(blur)) {
+      this.kernels = blur;
+    } else {
+      this._blur = blur;
+      this.quality = quality;
+    }
+  }
+
+  if (Filter) KawaseBlurFilter.__proto__ = Filter;
+  KawaseBlurFilter.prototype = Object.create(Filter && Filter.prototype);
+  KawaseBlurFilter.prototype.constructor = KawaseBlurFilter;
+  var prototypeAccessors = {
+    kernels: {
+      configurable: true
+    },
+    clamp: {
+      configurable: true
+    },
+    pixelSize: {
+      configurable: true
+    },
+    quality: {
+      configurable: true
+    },
+    blur: {
+      configurable: true
+    }
+  };
+  /**
+   * Overrides apply
+   * @private
+   */
+
+  KawaseBlurFilter.prototype.apply = function apply(filterManager, input, output, clear) {
+    var uvX = this._pixelSize.x / input._frame.width;
+    var uvY = this._pixelSize.y / input._frame.height;
+    var offset;
+
+    if (this._quality === 1 || this._blur === 0) {
+      offset = this._kernels[0] + 0.5;
+      this.uniforms.uOffset[0] = offset * uvX;
+      this.uniforms.uOffset[1] = offset * uvY;
+      filterManager.applyFilter(this, input, output, clear);
+    } else {
+      var renderTarget = filterManager.getFilterTexture();
+      var source = input;
+      var target = renderTarget;
+      var tmp;
+      var last = this._quality - 1;
+
+      for (var i = 0; i < last; i++) {
+        offset = this._kernels[i] + 0.5;
+        this.uniforms.uOffset[0] = offset * uvX;
+        this.uniforms.uOffset[1] = offset * uvY;
+        filterManager.applyFilter(this, source, target, 1);
+        tmp = source;
+        source = target;
+        target = tmp;
+      }
+
+      offset = this._kernels[last] + 0.5;
+      this.uniforms.uOffset[0] = offset * uvX;
+      this.uniforms.uOffset[1] = offset * uvY;
+      filterManager.applyFilter(this, source, output, clear);
+      filterManager.returnFilterTexture(renderTarget);
+    }
+  };
+
+  KawaseBlurFilter.prototype._updatePadding = function _updatePadding() {
+    this.padding = Math.ceil(this._kernels.reduce(function (acc, v) {
+      return acc + v + 0.5;
+    }, 0));
+  };
+  /**
+   * Auto generate kernels by blur & quality
+   * @private
+   */
+
+
+  KawaseBlurFilter.prototype._generateKernels = function _generateKernels() {
+    var blur = this._blur;
+    var quality = this._quality;
+    var kernels = [blur];
+
+    if (blur > 0) {
+      var k = blur;
+      var step = blur / quality;
+
+      for (var i = 1; i < quality; i++) {
+        k -= step;
+        kernels.push(k);
+      }
+    }
+
+    this._kernels = kernels;
+
+    this._updatePadding();
+  };
+  /**
+   * The kernel size of the blur filter, for advanced usage.
+   *
+   * @member {number[]}
+   * @default [0]
+   */
+
+
+  prototypeAccessors.kernels.get = function () {
+    return this._kernels;
+  };
+
+  prototypeAccessors.kernels.set = function (value) {
+    if (Array.isArray(value) && value.length > 0) {
+      this._kernels = value;
+      this._quality = value.length;
+      this._blur = Math.max.apply(Math, value);
+    } else {
+      // if value is invalid , set default value
+      this._kernels = [0];
+      this._quality = 1;
+    }
+  };
+  /**
+   * Get the if the filter is clampped.
+   *
+   * @readonly
+   * @member {boolean}
+   * @default false
+   */
+
+
+  prototypeAccessors.clamp.get = function () {
+    return this._clamp;
+  };
+  /**
+   * Sets the pixel size of the filter. Large size is blurrier. For advanced usage.
+   *
+   * @member {PIXI.Point|number[]}
+   * @default [1, 1]
+   */
+
+
+  prototypeAccessors.pixelSize.set = function (value) {
+    if (typeof value === 'number') {
+      this._pixelSize.x = value;
+      this._pixelSize.y = value;
+    } else if (Array.isArray(value)) {
+      this._pixelSize.x = value[0];
+      this._pixelSize.y = value[1];
+    } else if (value instanceof _math.Point) {
+      this._pixelSize.x = value.x;
+      this._pixelSize.y = value.y;
+    } else {
+      // if value is invalid , set default value
+      this._pixelSize.x = 1;
+      this._pixelSize.y = 1;
+    }
+  };
+
+  prototypeAccessors.pixelSize.get = function () {
+    return this._pixelSize;
+  };
+  /**
+   * The quality of the filter, integer greater than `1`.
+   *
+   * @member {number}
+   * @default 3
+   */
+
+
+  prototypeAccessors.quality.get = function () {
+    return this._quality;
+  };
+
+  prototypeAccessors.quality.set = function (value) {
+    this._quality = Math.max(1, Math.round(value));
+
+    this._generateKernels();
+  };
+  /**
+   * The amount of blur, value greater than `0`.
+   *
+   * @member {number}
+   * @default 4
+   */
+
+
+  prototypeAccessors.blur.get = function () {
+    return this._blur;
+  };
+
+  prototypeAccessors.blur.set = function (value) {
+    this._blur = value;
+
+    this._generateKernels();
+  };
+
+  Object.defineProperties(KawaseBlurFilter.prototype, prototypeAccessors);
+  return KawaseBlurFilter;
+}(_core.Filter);
+
+exports.KawaseBlurFilter = KawaseBlurFilter;
+},{"@pixi/core":"../../node_modules/@pixi/core/lib/core.es.js","@pixi/math":"../../node_modules/@pixi/math/lib/math.es.js"}],"../../node_modules/@pixi/filter-advanced-bloom/lib/filter-advanced-bloom.esm.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.AdvancedBloomFilter = void 0;
+
+var _core = require("@pixi/core");
+
+var _filterKawaseBlur = require("@pixi/filter-kawase-blur");
+
+var _settings = require("@pixi/settings");
+
+/*!
+ * @pixi/filter-advanced-bloom - v3.2.0
+ * Compiled Wed, 23 Dec 2020 00:29:02 UTC
+ *
+ * @pixi/filter-advanced-bloom is licensed under the MIT License.
+ * http://www.opensource.org/licenses/mit-license
+ */
+var vertex = "attribute vec2 aVertexPosition;\nattribute vec2 aTextureCoord;\n\nuniform mat3 projectionMatrix;\n\nvarying vec2 vTextureCoord;\n\nvoid main(void)\n{\n    gl_Position = vec4((projectionMatrix * vec3(aVertexPosition, 1.0)).xy, 0.0, 1.0);\n    vTextureCoord = aTextureCoord;\n}";
+var fragment = "\nuniform sampler2D uSampler;\nvarying vec2 vTextureCoord;\n\nuniform float threshold;\n\nvoid main() {\n    vec4 color = texture2D(uSampler, vTextureCoord);\n\n    // A simple & fast algorithm for getting brightness.\n    // It's inaccuracy , but good enought for this feature.\n    float _max = max(max(color.r, color.g), color.b);\n    float _min = min(min(color.r, color.g), color.b);\n    float brightness = (_max + _min) * 0.5;\n\n    if(brightness > threshold) {\n        gl_FragColor = color;\n    } else {\n        gl_FragColor = vec4(0.0, 0.0, 0.0, 0.0);\n    }\n}\n";
+/**
+ * Internal filter for AdvancedBloomFilter to get brightness.
+ * @class
+ * @private
+ * @param {number} [threshold=0.5] Defines how bright a color needs to be extracted.
+ */
+
+var ExtractBrightnessFilter = /*@__PURE__*/function (Filter) {
+  function ExtractBrightnessFilter(threshold) {
+    if (threshold === void 0) threshold = 0.5;
+    Filter.call(this, vertex, fragment);
+    this.threshold = threshold;
+  }
+
+  if (Filter) ExtractBrightnessFilter.__proto__ = Filter;
+  ExtractBrightnessFilter.prototype = Object.create(Filter && Filter.prototype);
+  ExtractBrightnessFilter.prototype.constructor = ExtractBrightnessFilter;
+  var prototypeAccessors = {
+    threshold: {
+      configurable: true
+    }
+  };
+  /**
+   * Defines how bright a color needs to be extracted.
+   *
+   * @member {number}
+   * @default 0.5
+   */
+
+  prototypeAccessors.threshold.get = function () {
+    return this.uniforms.threshold;
+  };
+
+  prototypeAccessors.threshold.set = function (value) {
+    this.uniforms.threshold = value;
+  };
+
+  Object.defineProperties(ExtractBrightnessFilter.prototype, prototypeAccessors);
+  return ExtractBrightnessFilter;
+}(_core.Filter);
+
+var fragment$1 = "uniform sampler2D uSampler;\nvarying vec2 vTextureCoord;\n\nuniform sampler2D bloomTexture;\nuniform float bloomScale;\nuniform float brightness;\n\nvoid main() {\n    vec4 color = texture2D(uSampler, vTextureCoord);\n    color.rgb *= brightness;\n    vec4 bloomColor = vec4(texture2D(bloomTexture, vTextureCoord).rgb, 0.0);\n    bloomColor.rgb *= bloomScale;\n    gl_FragColor = color + bloomColor;\n}\n";
+/**
+ * The AdvancedBloomFilter applies a Bloom Effect to an object. Unlike the normal BloomFilter
+ * this had some advanced controls for adjusting the look of the bloom. Note: this filter
+ * is slower than normal BloomFilter.<br>
+ * ![original](../tools/screenshots/dist/original.png)![filter](../tools/screenshots/dist/advanced-bloom.png)
+ *
+ * @class
+ * @extends PIXI.Filter
+ * @memberof PIXI.filters
+ * @see {@link https://www.npmjs.com/package/@pixi/filter-advanced-bloom|@pixi/filter-advanced-bloom}
+ * @see {@link https://www.npmjs.com/package/pixi-filters|pixi-filters}
+ *
+ * @param {object|number} [options] - The optional parameters of advanced bloom filter.
+ *                        When options is a number , it will be `options.threshold`.
+ * @param {number} [options.threshold=0.5] - Defines how bright a color needs to be to affect bloom.
+ * @param {number} [options.bloomScale=1.0] - To adjust the strength of the bloom. Higher values is more intense brightness.
+ * @param {number} [options.brightness=1.0] - The brightness, lower value is more subtle brightness, higher value is blown-out.
+ * @param {number} [options.blur=8] - Sets the strength of the Blur properties simultaneously
+ * @param {number} [options.quality=4] - The quality of the Blur filter.
+ * @param {number[]} [options.kernels=null] - The kernels of the Blur filter.
+ * @param {number|number[]|PIXI.Point} [options.pixelSize=1] - the pixelSize of the Blur filter.
+ * @param {number} [options.resolution=PIXI.settings.FILTER_RESOLUTION] - The resolution of the Blur filter.
+ */
+
+var AdvancedBloomFilter = /*@__PURE__*/function (Filter) {
+  function AdvancedBloomFilter(options) {
+    Filter.call(this, vertex, fragment$1);
+
+    if (typeof options === 'number') {
+      options = {
+        threshold: options
+      };
+    }
+
+    options = Object.assign({
+      threshold: 0.5,
+      bloomScale: 1.0,
+      brightness: 1.0,
+      kernels: null,
+      blur: 8,
+      quality: 4,
+      pixelSize: 1,
+      resolution: _settings.settings.FILTER_RESOLUTION
+    }, options);
+    /**
+     * To adjust the strength of the bloom. Higher values is more intense brightness.
+     *
+     * @member {number}
+     * @default 1.0
+     */
+
+    this.bloomScale = options.bloomScale;
+    /**
+     * The brightness, lower value is more subtle brightness, higher value is blown-out.
+     *
+     * @member {number}
+     * @default 1.0
+     */
+
+    this.brightness = options.brightness;
+    var kernels = options.kernels;
+    var blur = options.blur;
+    var quality = options.quality;
+    var pixelSize = options.pixelSize;
+    var resolution = options.resolution;
+    this._extractFilter = new ExtractBrightnessFilter(options.threshold);
+    this._extractFilter.resolution = resolution;
+    this._blurFilter = kernels ? new _filterKawaseBlur.KawaseBlurFilter(kernels) : new _filterKawaseBlur.KawaseBlurFilter(blur, quality);
+    this.pixelSize = pixelSize;
+    this.resolution = resolution;
+  }
+
+  if (Filter) AdvancedBloomFilter.__proto__ = Filter;
+  AdvancedBloomFilter.prototype = Object.create(Filter && Filter.prototype);
+  AdvancedBloomFilter.prototype.constructor = AdvancedBloomFilter;
+  var prototypeAccessors = {
+    resolution: {
+      configurable: true
+    },
+    threshold: {
+      configurable: true
+    },
+    kernels: {
+      configurable: true
+    },
+    blur: {
+      configurable: true
+    },
+    quality: {
+      configurable: true
+    },
+    pixelSize: {
+      configurable: true
+    }
+  };
+  /**
+   * Override existing apply method in PIXI.Filter
+   * @private
+   */
+
+  AdvancedBloomFilter.prototype.apply = function apply(filterManager, input, output, clear, currentState) {
+    var brightTarget = filterManager.getFilterTexture();
+
+    this._extractFilter.apply(filterManager, input, brightTarget, 1, currentState);
+
+    var bloomTarget = filterManager.getFilterTexture();
+
+    this._blurFilter.apply(filterManager, brightTarget, bloomTarget, 1, currentState);
+
+    this.uniforms.bloomScale = this.bloomScale;
+    this.uniforms.brightness = this.brightness;
+    this.uniforms.bloomTexture = bloomTarget;
+    filterManager.applyFilter(this, input, output, clear);
+    filterManager.returnFilterTexture(bloomTarget);
+    filterManager.returnFilterTexture(brightTarget);
+  };
+  /**
+   * The resolution of the filter.
+   *
+   * @member {number}
+   */
+
+
+  prototypeAccessors.resolution.get = function () {
+    return this._resolution;
+  };
+
+  prototypeAccessors.resolution.set = function (value) {
+    this._resolution = value;
+
+    if (this._extractFilter) {
+      this._extractFilter.resolution = value;
+    }
+
+    if (this._blurFilter) {
+      this._blurFilter.resolution = value;
+    }
+  };
+  /**
+   * Defines how bright a color needs to be to affect bloom.
+   *
+   * @member {number}
+   * @default 0.5
+   */
+
+
+  prototypeAccessors.threshold.get = function () {
+    return this._extractFilter.threshold;
+  };
+
+  prototypeAccessors.threshold.set = function (value) {
+    this._extractFilter.threshold = value;
+  };
+  /**
+   * Sets the kernels of the Blur Filter
+   *
+   * @member {number}
+   * @default 4
+   */
+
+
+  prototypeAccessors.kernels.get = function () {
+    return this._blurFilter.kernels;
+  };
+
+  prototypeAccessors.kernels.set = function (value) {
+    this._blurFilter.kernels = value;
+  };
+  /**
+   * Sets the strength of the Blur properties simultaneously
+   *
+   * @member {number}
+   * @default 2
+   */
+
+
+  prototypeAccessors.blur.get = function () {
+    return this._blurFilter.blur;
+  };
+
+  prototypeAccessors.blur.set = function (value) {
+    this._blurFilter.blur = value;
+  };
+  /**
+   * Sets the quality of the Blur Filter
+   *
+   * @member {number}
+   * @default 4
+   */
+
+
+  prototypeAccessors.quality.get = function () {
+    return this._blurFilter.quality;
+  };
+
+  prototypeAccessors.quality.set = function (value) {
+    this._blurFilter.quality = value;
+  };
+  /**
+   * Sets the pixelSize of the Kawase Blur filter
+   *
+   * @member {number|number[]|PIXI.Point}
+   * @default 1
+   */
+
+
+  prototypeAccessors.pixelSize.get = function () {
+    return this._blurFilter.pixelSize;
+  };
+
+  prototypeAccessors.pixelSize.set = function (value) {
+    this._blurFilter.pixelSize = value;
+  };
+
+  Object.defineProperties(AdvancedBloomFilter.prototype, prototypeAccessors);
+  return AdvancedBloomFilter;
+}(_core.Filter);
+
+exports.AdvancedBloomFilter = AdvancedBloomFilter;
+},{"@pixi/core":"../../node_modules/@pixi/core/lib/core.es.js","@pixi/filter-kawase-blur":"../../node_modules/@pixi/filter-kawase-blur/lib/filter-kawase-blur.esm.js","@pixi/settings":"../../node_modules/@pixi/settings/lib/settings.es.js"}],"ParticleSystem.ts":[function(require,module,exports) {
+"use strict";
+
+var __createBinding = this && this.__createBinding || (Object.create ? function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  Object.defineProperty(o, k2, {
+    enumerable: true,
+    get: function get() {
+      return m[k];
+    }
+  });
+} : function (o, m, k, k2) {
+  if (k2 === undefined) k2 = k;
+  o[k2] = m[k];
+});
+
+var __setModuleDefault = this && this.__setModuleDefault || (Object.create ? function (o, v) {
+  Object.defineProperty(o, "default", {
+    enumerable: true,
+    value: v
+  });
+} : function (o, v) {
+  o["default"] = v;
+});
+
+var __importStar = this && this.__importStar || function (mod) {
+  if (mod && mod.__esModule) return mod;
+  var result = {};
+  if (mod != null) for (var k in mod) {
+    if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+  }
+
+  __setModuleDefault(result, mod);
+
+  return result;
+};
 
 var __importDefault = this && this.__importDefault || function (mod) {
   return mod && mod.__esModule ? mod : {
@@ -49756,21 +50398,22 @@ var ParticleEmitter_1 = require("./ParticleEmitter");
 
 var ParticleForce_1 = require("./ParticleForce");
 
+var filter_advanced_bloom_1 = require("@pixi/filter-advanced-bloom");
+
+var Vector2_1 = __importDefault(require("./Vector2"));
+
+var PIXI = __importStar(require("pixi.js"));
+
 var ParticleSystem =
 /** @class */
 function () {
   function ParticleSystem() {
     // super();
     // this.autoResize = true;
-    this.emitters = Array();
-    var line_emitter = new ParticleEmitter_1.LineEmitter();
-    line_emitter.width = 250;
-    this.emitters.push(line_emitter); // this.emitters[0].position.x = 250;
+    this.emitters = Array(); // this.emitters[0].position.x = 250;
     // this.emitters[0].position.y = 100;
 
     this.forces = [];
-    var gravity = new ParticleForce_1.ParticleForceDirectional();
-    this.forces.push(gravity);
     this.clock = new Clock_1.default();
   }
 
@@ -49787,397 +50430,14 @@ function () {
 }();
 
 exports.default = ParticleSystem;
-},{"./Clock":"modules/Clock.ts","./ParticleEmitter":"modules/ParticleEmitter.ts","./ParticleForce":"modules/ParticleForce.ts"}],"../node_modules/noisejs/index.js":[function(require,module,exports) {
-var global = arguments[3];
-/*
- * A speed-improved perlin and simplex noise algorithms for 2D.
- *
- * Based on example code by Stefan Gustavson (stegu@itn.liu.se).
- * Optimisations by Peter Eastman (peastman@drizzle.stanford.edu).
- * Better rank ordering method by Stefan Gustavson in 2012.
- * Converted to Javascript by Joseph Gentle.
- *
- * Version 2012-03-09
- *
- * This code was placed in the public domain by its original author,
- * Stefan Gustavson. You may use it as you see fit, but
- * attribution is appreciated.
- *
- */
-
-(function(global){
-
-  // Passing in seed will seed this Noise instance
-  function Noise(seed) {
-    function Grad(x, y, z) {
-      this.x = x; this.y = y; this.z = z;
-    }
-
-    Grad.prototype.dot2 = function(x, y) {
-      return this.x*x + this.y*y;
-    };
-
-    Grad.prototype.dot3 = function(x, y, z) {
-      return this.x*x + this.y*y + this.z*z;
-    };
-
-    this.grad3 = [new Grad(1,1,0),new Grad(-1,1,0),new Grad(1,-1,0),new Grad(-1,-1,0),
-                 new Grad(1,0,1),new Grad(-1,0,1),new Grad(1,0,-1),new Grad(-1,0,-1),
-                 new Grad(0,1,1),new Grad(0,-1,1),new Grad(0,1,-1),new Grad(0,-1,-1)];
-
-    this.p = [151,160,137,91,90,15,
-    131,13,201,95,96,53,194,233,7,225,140,36,103,30,69,142,8,99,37,240,21,10,23,
-    190, 6,148,247,120,234,75,0,26,197,62,94,252,219,203,117,35,11,32,57,177,33,
-    88,237,149,56,87,174,20,125,136,171,168, 68,175,74,165,71,134,139,48,27,166,
-    77,146,158,231,83,111,229,122,60,211,133,230,220,105,92,41,55,46,245,40,244,
-    102,143,54, 65,25,63,161, 1,216,80,73,209,76,132,187,208, 89,18,169,200,196,
-    135,130,116,188,159,86,164,100,109,198,173,186, 3,64,52,217,226,250,124,123,
-    5,202,38,147,118,126,255,82,85,212,207,206,59,227,47,16,58,17,182,189,28,42,
-    223,183,170,213,119,248,152, 2,44,154,163, 70,221,153,101,155,167, 43,172,9,
-    129,22,39,253, 19,98,108,110,79,113,224,232,178,185, 112,104,218,246,97,228,
-    251,34,242,193,238,210,144,12,191,179,162,241, 81,51,145,235,249,14,239,107,
-    49,192,214, 31,181,199,106,157,184, 84,204,176,115,121,50,45,127, 4,150,254,
-    138,236,205,93,222,114,67,29,24,72,243,141,128,195,78,66,215,61,156,180];
-    // To remove the need for index wrapping, double the permutation table length
-    this.perm = new Array(512);
-    this.gradP = new Array(512);
-
-    this.seed(seed || 0);
-  }
-
-  // This isn't a very good seeding function, but it works ok. It supports 2^16
-  // different seed values. Write something better if you need more seeds.
-  Noise.prototype.seed = function(seed) {
-    if(seed > 0 && seed < 1) {
-      // Scale the seed out
-      seed *= 65536;
-    }
-
-    seed = Math.floor(seed);
-    if(seed < 256) {
-      seed |= seed << 8;
-    }
-
-    var p = this.p;
-    for(var i = 0; i < 256; i++) {
-      var v;
-      if (i & 1) {
-        v = p[i] ^ (seed & 255);
-      } else {
-        v = p[i] ^ ((seed>>8) & 255);
-      }
-
-      var perm = this.perm;
-      var gradP = this.gradP;
-      perm[i] = perm[i + 256] = v;
-      gradP[i] = gradP[i + 256] = this.grad3[v % 12];
-    }
-  };
-
-  /*
-  for(var i=0; i<256; i++) {
-    perm[i] = perm[i + 256] = p[i];
-    gradP[i] = gradP[i + 256] = grad3[perm[i] % 12];
-  }*/
-
-  // Skewing and unskewing factors for 2, 3, and 4 dimensions
-  var F2 = 0.5*(Math.sqrt(3)-1);
-  var G2 = (3-Math.sqrt(3))/6;
-
-  var F3 = 1/3;
-  var G3 = 1/6;
-
-  // 2D simplex noise
-  Noise.prototype.simplex2 = function(xin, yin) {
-    var n0, n1, n2; // Noise contributions from the three corners
-    // Skew the input space to determine which simplex cell we're in
-    var s = (xin+yin)*F2; // Hairy factor for 2D
-    var i = Math.floor(xin+s);
-    var j = Math.floor(yin+s);
-    var t = (i+j)*G2;
-    var x0 = xin-i+t; // The x,y distances from the cell origin, unskewed.
-    var y0 = yin-j+t;
-    // For the 2D case, the simplex shape is an equilateral triangle.
-    // Determine which simplex we are in.
-    var i1, j1; // Offsets for second (middle) corner of simplex in (i,j) coords
-    if(x0>y0) { // lower triangle, XY order: (0,0)->(1,0)->(1,1)
-      i1=1; j1=0;
-    } else {    // upper triangle, YX order: (0,0)->(0,1)->(1,1)
-      i1=0; j1=1;
-    }
-    // A step of (1,0) in (i,j) means a step of (1-c,-c) in (x,y), and
-    // a step of (0,1) in (i,j) means a step of (-c,1-c) in (x,y), where
-    // c = (3-sqrt(3))/6
-    var x1 = x0 - i1 + G2; // Offsets for middle corner in (x,y) unskewed coords
-    var y1 = y0 - j1 + G2;
-    var x2 = x0 - 1 + 2 * G2; // Offsets for last corner in (x,y) unskewed coords
-    var y2 = y0 - 1 + 2 * G2;
-    // Work out the hashed gradient indices of the three simplex corners
-    i &= 255;
-    j &= 255;
-
-    var perm = this.perm;
-    var gradP = this.gradP;
-    var gi0 = gradP[i+perm[j]];
-    var gi1 = gradP[i+i1+perm[j+j1]];
-    var gi2 = gradP[i+1+perm[j+1]];
-    // Calculate the contribution from the three corners
-    var t0 = 0.5 - x0*x0-y0*y0;
-    if(t0<0) {
-      n0 = 0;
-    } else {
-      t0 *= t0;
-      n0 = t0 * t0 * gi0.dot2(x0, y0);  // (x,y) of grad3 used for 2D gradient
-    }
-    var t1 = 0.5 - x1*x1-y1*y1;
-    if(t1<0) {
-      n1 = 0;
-    } else {
-      t1 *= t1;
-      n1 = t1 * t1 * gi1.dot2(x1, y1);
-    }
-    var t2 = 0.5 - x2*x2-y2*y2;
-    if(t2<0) {
-      n2 = 0;
-    } else {
-      t2 *= t2;
-      n2 = t2 * t2 * gi2.dot2(x2, y2);
-    }
-    // Add contributions from each corner to get the final noise value.
-    // The result is scaled to return values in the interval [-1,1].
-    return 70 * (n0 + n1 + n2);
-  };
-
-  // 3D simplex noise
-  Noise.prototype.simplex3 = function(xin, yin, zin) {
-    var n0, n1, n2, n3; // Noise contributions from the four corners
-
-    // Skew the input space to determine which simplex cell we're in
-    var s = (xin+yin+zin)*F3; // Hairy factor for 2D
-    var i = Math.floor(xin+s);
-    var j = Math.floor(yin+s);
-    var k = Math.floor(zin+s);
-
-    var t = (i+j+k)*G3;
-    var x0 = xin-i+t; // The x,y distances from the cell origin, unskewed.
-    var y0 = yin-j+t;
-    var z0 = zin-k+t;
-
-    // For the 3D case, the simplex shape is a slightly irregular tetrahedron.
-    // Determine which simplex we are in.
-    var i1, j1, k1; // Offsets for second corner of simplex in (i,j,k) coords
-    var i2, j2, k2; // Offsets for third corner of simplex in (i,j,k) coords
-    if(x0 >= y0) {
-      if(y0 >= z0)      { i1=1; j1=0; k1=0; i2=1; j2=1; k2=0; }
-      else if(x0 >= z0) { i1=1; j1=0; k1=0; i2=1; j2=0; k2=1; }
-      else              { i1=0; j1=0; k1=1; i2=1; j2=0; k2=1; }
-    } else {
-      if(y0 < z0)      { i1=0; j1=0; k1=1; i2=0; j2=1; k2=1; }
-      else if(x0 < z0) { i1=0; j1=1; k1=0; i2=0; j2=1; k2=1; }
-      else             { i1=0; j1=1; k1=0; i2=1; j2=1; k2=0; }
-    }
-    // A step of (1,0,0) in (i,j,k) means a step of (1-c,-c,-c) in (x,y,z),
-    // a step of (0,1,0) in (i,j,k) means a step of (-c,1-c,-c) in (x,y,z), and
-    // a step of (0,0,1) in (i,j,k) means a step of (-c,-c,1-c) in (x,y,z), where
-    // c = 1/6.
-    var x1 = x0 - i1 + G3; // Offsets for second corner
-    var y1 = y0 - j1 + G3;
-    var z1 = z0 - k1 + G3;
-
-    var x2 = x0 - i2 + 2 * G3; // Offsets for third corner
-    var y2 = y0 - j2 + 2 * G3;
-    var z2 = z0 - k2 + 2 * G3;
-
-    var x3 = x0 - 1 + 3 * G3; // Offsets for fourth corner
-    var y3 = y0 - 1 + 3 * G3;
-    var z3 = z0 - 1 + 3 * G3;
-
-    // Work out the hashed gradient indices of the four simplex corners
-    i &= 255;
-    j &= 255;
-    k &= 255;
-
-    var perm = this.perm;
-    var gradP = this.gradP;
-    var gi0 = gradP[i+   perm[j+   perm[k   ]]];
-    var gi1 = gradP[i+i1+perm[j+j1+perm[k+k1]]];
-    var gi2 = gradP[i+i2+perm[j+j2+perm[k+k2]]];
-    var gi3 = gradP[i+ 1+perm[j+ 1+perm[k+ 1]]];
-
-    // Calculate the contribution from the four corners
-    var t0 = 0.5 - x0*x0-y0*y0-z0*z0;
-    if(t0<0) {
-      n0 = 0;
-    } else {
-      t0 *= t0;
-      n0 = t0 * t0 * gi0.dot3(x0, y0, z0);  // (x,y) of grad3 used for 2D gradient
-    }
-    var t1 = 0.5 - x1*x1-y1*y1-z1*z1;
-    if(t1<0) {
-      n1 = 0;
-    } else {
-      t1 *= t1;
-      n1 = t1 * t1 * gi1.dot3(x1, y1, z1);
-    }
-    var t2 = 0.5 - x2*x2-y2*y2-z2*z2;
-    if(t2<0) {
-      n2 = 0;
-    } else {
-      t2 *= t2;
-      n2 = t2 * t2 * gi2.dot3(x2, y2, z2);
-    }
-    var t3 = 0.5 - x3*x3-y3*y3-z3*z3;
-    if(t3<0) {
-      n3 = 0;
-    } else {
-      t3 *= t3;
-      n3 = t3 * t3 * gi3.dot3(x3, y3, z3);
-    }
-    // Add contributions from each corner to get the final noise value.
-    // The result is scaled to return values in the interval [-1,1].
-    return 32 * (n0 + n1 + n2 + n3);
-
-  };
-
-  // ##### Perlin noise stuff
-
-  function fade(t) {
-    return t*t*t*(t*(t*6-15)+10);
-  }
-
-  function lerp(a, b, t) {
-    return (1-t)*a + t*b;
-  }
-
-  // 2D Perlin Noise
-  Noise.prototype.perlin2 = function(x, y) {
-    // Find unit grid cell containing point
-    var X = Math.floor(x), Y = Math.floor(y);
-    // Get relative xy coordinates of point within that cell
-    x = x - X; y = y - Y;
-    // Wrap the integer cells at 255 (smaller integer period can be introduced here)
-    X = X & 255; Y = Y & 255;
-
-    // Calculate noise contributions from each of the four corners
-    var perm = this.perm;
-    var gradP = this.gradP;
-    var n00 = gradP[X+perm[Y]].dot2(x, y);
-    var n01 = gradP[X+perm[Y+1]].dot2(x, y-1);
-    var n10 = gradP[X+1+perm[Y]].dot2(x-1, y);
-    var n11 = gradP[X+1+perm[Y+1]].dot2(x-1, y-1);
-
-    // Compute the fade curve value for x
-    var u = fade(x);
-
-    // Interpolate the four results
-    return lerp(
-        lerp(n00, n10, u),
-        lerp(n01, n11, u),
-       fade(y));
-  };
-
-  // 3D Perlin Noise
-  Noise.prototype.perlin3 = function(x, y, z) {
-    // Find unit grid cell containing point
-    var X = Math.floor(x), Y = Math.floor(y), Z = Math.floor(z);
-    // Get relative xyz coordinates of point within that cell
-    x = x - X; y = y - Y; z = z - Z;
-    // Wrap the integer cells at 255 (smaller integer period can be introduced here)
-    X = X & 255; Y = Y & 255; Z = Z & 255;
-
-    // Calculate noise contributions from each of the eight corners
-    var perm = this.perm;
-    var gradP = this.gradP;
-    var n000 = gradP[X+  perm[Y+  perm[Z  ]]].dot3(x,   y,     z);
-    var n001 = gradP[X+  perm[Y+  perm[Z+1]]].dot3(x,   y,   z-1);
-    var n010 = gradP[X+  perm[Y+1+perm[Z  ]]].dot3(x,   y-1,   z);
-    var n011 = gradP[X+  perm[Y+1+perm[Z+1]]].dot3(x,   y-1, z-1);
-    var n100 = gradP[X+1+perm[Y+  perm[Z  ]]].dot3(x-1,   y,   z);
-    var n101 = gradP[X+1+perm[Y+  perm[Z+1]]].dot3(x-1,   y, z-1);
-    var n110 = gradP[X+1+perm[Y+1+perm[Z  ]]].dot3(x-1, y-1,   z);
-    var n111 = gradP[X+1+perm[Y+1+perm[Z+1]]].dot3(x-1, y-1, z-1);
-
-    // Compute the fade curve value for x, y, z
-    var u = fade(x);
-    var v = fade(y);
-    var w = fade(z);
-
-    // Interpolate
-    return lerp(
-        lerp(
-          lerp(n000, n100, u),
-          lerp(n001, n101, u), w),
-        lerp(
-          lerp(n010, n110, u),
-          lerp(n011, n111, u), w),
-       v);
-  };
-
-  global.Noise = Noise;
-
-})(typeof module === "undefined" ? this : module.exports);
-
-},{}],"index.js":[function(require,module,exports) {
-"use strict";
-
-var _ParticleSystem = _interopRequireDefault(require("./modules/ParticleSystem"));
-
-var _Vector = _interopRequireDefault(require("./modules/Vector2"));
-
-var _noisejs = require("noisejs");
-
-var PIXI = _interopRequireWildcard(require("pixi.js"));
-
-function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var noise = new _noisejs.Noise(Math.random());
-console.log(noise); // window.ParticleSystem = ParticleSystem;
-
-var pixi_canvas = document.getElementById("pixi-canvas");
-var width = window.innerWidth;
-var height = window.innerHeight;
-var app = new PIXI.Application({
-  width: width,
-  height: height,
-  view: pixi_canvas
-});
-var ps = new _ParticleSystem.default();
-var blur = new PIXI.filters.BlurFilter(); // ps.emitters[0].pixi_container.filters = [blur];
-
-app.stage.addChild(ps.emitters[0].pixi_container);
-ps.emitters[0].startEmission(); // setTimeout(() => {
-//   ps.emitters[0].stopEmission();
-// }, 2000);
-// pixi_canvas.addEventListener("mousedown", () => {
-//   ps.emitters[0].startEmission();
-// });
-// pixi_canvas.addEventListener("mouseup", () => {
-//   ps.emitters[0].stopEmission();
-// });
-
-app.ticker.add(function () {
-  var angle = ps.clock.millis / 1000 * 2.05;
-  var line_emitter = ps.emitters[0];
-  line_emitter.width = width * 1.1;
-  line_emitter.position.x = width / 2 - line_emitter.width / 2;
-  line_emitter.position.y = -10; // ps.emitters[0].position.x = Math.sin(angle) * 250 + width / 2;
-  // ps.emitters[0].position.y = Math.cos(angle) * 250 + height / 2;
-
-  ps.update(); //   ps.emitters[0].position.x = 0;
-  //   ps.emitters[0].position.y = 0;
-
-  var delta = ps.clock.getDeltaMillis();
-  var fps = 1000 / delta; //   blur.blur = 2.5;
-}); // function animate() {
-//   //   ctx.fillText(Math.floor(fps), 10, 20);
-//   requestAnimationFrame(animate);
-// }
-// animate();
-},{"./modules/ParticleSystem":"modules/ParticleSystem.ts","./modules/Vector2":"modules/Vector2.ts","noisejs":"../node_modules/noisejs/index.js","pixi.js":"../node_modules/pixi.js/lib/pixi.es.js"}],"../../../../../Users/Sprayfly/AppData/Roaming/npm/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+window.PIXI = PIXI;
+window.Vector2 = Vector2_1.default;
+window.ParticleSystem = ParticleSystem;
+window.LineEmitter = ParticleEmitter_1.LineEmitter;
+window.ParticleForceDirectional = ParticleForce_1.ParticleForceDirectional;
+window.ParticleForcePoint = ParticleForce_1.ParticleForcePoint;
+window.AdvancedBloomFilter = filter_advanced_bloom_1.AdvancedBloomFilter;
+},{"./Clock":"Clock.ts","./ParticleEmitter":"ParticleEmitter.ts","./ParticleForce":"ParticleForce.ts","@pixi/filter-advanced-bloom":"../../node_modules/@pixi/filter-advanced-bloom/lib/filter-advanced-bloom.esm.js","./Vector2":"Vector2.ts","pixi.js":"../../node_modules/pixi.js/lib/pixi.es.js"}],"../../../../../../Users/Sprayfly/AppData/Roaming/npm/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -50205,7 +50465,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64599" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50112" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
@@ -50381,5 +50641,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["../../../../../Users/Sprayfly/AppData/Roaming/npm/node_modules/parcel/src/builtins/hmr-runtime.js","index.js"], null)
+},{}]},{},["../../../../../../Users/Sprayfly/AppData/Roaming/npm/node_modules/parcel/src/builtins/hmr-runtime.js","ParticleSystem.ts"], null)
 //# sourceMappingURL=/gui2one_particles.js.map

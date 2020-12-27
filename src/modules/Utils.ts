@@ -12,3 +12,26 @@ export const clamp = (src, min, max): number => {
 export const lerp = (ratio, value1, value2): number => {
   return (value2 - value1) * clamp(ratio, 0, 1) + value1;
 };
+
+export const smoothStep = (ratio: number) => {
+  return ratio * ratio * (1 - ratio / 1.5) * 3;
+};
+export const slerp = (ratio: number, value1: number, value2: number) => {
+  return fit_range(smoothStep(ratio), 0, 1, value1, value2);
+};
+
+export const interpolate = (type: string, ratio: number, value1: number, value2: number): number => {
+  let ret = 0;
+  switch (type) {
+    case "linear":
+      ret = lerp(ratio, value1, value2);
+      break;
+    case "smoothStep":
+      ret = slerp(ratio, value1, value2);
+      break;
+    default:
+      break;
+  }
+
+  return ret;
+};

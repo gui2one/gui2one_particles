@@ -1,7 +1,9 @@
 import Clock from "./Clock";
 import ParticleEmitter, { LineEmitter } from "./ParticleEmitter";
-import ParticleForceBase, { ParticleForceDirectional } from "./ParticleForce";
+import ParticleForceBase, { ParticleForceDirectional, ParticleForcePoint } from "./ParticleForce";
+import { AdvancedBloomFilter } from "@pixi/filter-advanced-bloom";
 
+import Vector2 from "./Vector2";
 import * as PIXI from "pixi.js";
 
 import { fit_range } from "./Utils";
@@ -13,16 +15,11 @@ export default class ParticleSystem {
     // super();
     // this.autoResize = true;
     this.emitters = Array<ParticleEmitter>();
-    let line_emitter = new LineEmitter();
-    line_emitter.width = 250;
-
-    this.emitters.push(line_emitter);
 
     // this.emitters[0].position.x = 250;
     // this.emitters[0].position.y = 100;
     this.forces = [];
-    let gravity = new ParticleForceDirectional();
-    this.forces.push(gravity);
+
     this.clock = new Clock();
   }
 
@@ -35,3 +32,11 @@ export default class ParticleSystem {
     }
   }
 }
+
+window.PIXI = PIXI;
+window.Vector2 = Vector2;
+window.ParticleSystem = ParticleSystem;
+window.LineEmitter = LineEmitter;
+window.ParticleForceDirectional = ParticleForceDirectional;
+window.ParticleForcePoint = ParticleForcePoint;
+window.AdvancedBloomFilter = AdvancedBloomFilter;
