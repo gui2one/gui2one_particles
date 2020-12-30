@@ -18,7 +18,8 @@ export default class ParticleEmitter {
   pixi_container: PIXI.Container;
   textures: PIXI.Texture[];
 
-  particles_scale: Number = 1.0;
+  min_particles_scale: Number = 0.1;
+  max_particles_scale: Number = 1.0;
   scale_over_life: FloatGradientRamp;
   color_over_life: ColorGradientRamp;
 
@@ -38,7 +39,6 @@ export default class ParticleEmitter {
     this.scale_over_life.setKeyValue(0, 1.0);
     this.scale_over_life.setKeyValue(1, 1.0);
     // this.scale_over_life.addKey(0.5, 1.5);
-    console.log("interpolation : ", this.scale_over_life.getValueAt(0.5));
 
     // this.scale_over_life.presets.rampDown();
     this.color_over_life = new ColorGradientRamp();
@@ -59,7 +59,7 @@ export default class ParticleEmitter {
       // const p = <Particle>PIXI.Sprite.from("snowflake.png"); // as Particle;
       let p = this.particles[this.particles.length - 1 - i];
       p.anchor.set(0.5);
-      p.scale.set(fit_range(Math.random(), 0, 1, 0.1, this.particles_scale));
+      p.scale.set(fit_range(Math.random(), 0, 1, this.min_particles_scale, this.max_particles_scale));
       p.mass = fit_range(Math.random(), 0, 1, 0.1, 1.0);
       p.tint = 0xff0000;
 
@@ -76,7 +76,7 @@ export default class ParticleEmitter {
 
       p.rotation_speed = fit_range(Math.random(), 0, 1, 0.0, 0.3);
       p.rotate_clockwise = Math.random() > 0.5;
-      p.life = 15.0;
+      p.life = 10.0;
 
       let rand_tex_id = Math.floor(Math.random() * this.textures.length);
       p.texture = this.textures[rand_tex_id];

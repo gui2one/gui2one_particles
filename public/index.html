@@ -12,7 +12,7 @@
     <script src="./gui2one_particles.js"></script>
     <script>
       const rev_slider = document.getElementById("pixi-canvas");
-      console.log(rev_slider.getBoundingClientRect());
+      // console.log(rev_slider.getBoundingClientRect());
 
       let timer;
       let mouseStopped = true;
@@ -26,7 +26,7 @@
       canvas.style.pointerEvents = "none";
       document.body.appendChild(canvas);
       const pixi_canvas = document.getElementById("pixi-canvas");
-      console.log(window.location);
+      // console.log(window.location);
       let width = window.innerWidth;
       let height = window.innerHeight;
       const app = new PIXI.Application({
@@ -38,11 +38,16 @@
 
       const ps = new ParticleSystem();
       let gravity = new ParticleForceDirectional();
-      gravity.setDirection(new Vector2(0, 30));
+      gravity.setDirection(new Vector2(0, 100));
       gravity.treat_as_wind = true;
       ps.forces.push(gravity);
 
+      let noise_force = new ParticleForceNoise();
+      noise_force.setSeed(Math.random());
+      ps.forces.push(noise_force);
+
       let point_force = new ParticleForcePoint();
+
       point_force.position.x = 100;
       point_force.position.y = 100;
       ps.forces.push(point_force);
@@ -54,7 +59,11 @@
       line_emitter.addTexture("snowflakes/snowflake_small.2.png");
       line_emitter.addTexture("snowflakes/snowflake_small.3.png");
       line_emitter.width = 250;
-      line_emitter.amount_per_second = 2;
+
+      line_emitter.min_particles_scale = 0.2;
+      line_emitter.max_particles_scale = 0.5;
+      line_emitter.rand_vel_amount = 0.0;
+      line_emitter.amount_per_second = 100;
       line_emitter.limit_num = 5000;
       ps.emitters.push(line_emitter);
       let bloom = new AdvancedBloomFilter({
