@@ -27,6 +27,8 @@ export default class ParticleEmitter {
 
   do_emission: boolean = true;
 
+  kill_function: Function;
+
   constructor() {
     this.pixi_container = new PIXI.Container();
     // this.pixi_container.autoResize = true;
@@ -119,13 +121,6 @@ export default class ParticleEmitter {
         this.emission_timer = 0.0;
       }
     }
-    this.particles = this.particles.filter((value) => {
-      return value.dead == false;
-    });
-    if (this.particles.length > this.limit_num) {
-      this.particles.splice(this.particles.length - this.limit_num - 2, this.particles.length - this.limit_num);
-      // this.particles.splice(0, this.limit_num);
-    }
 
     for (let p of this.particles) {
       // velocity
@@ -153,10 +148,24 @@ export default class ParticleEmitter {
       clr.b = Math.round(clr.b * 255);
       p.tint = (clr.r << 16) + (clr.g << 8) + (clr.b << 0);
       // console.log(p.tint);
+      p.position.set(p.position.x + vel.x * delta_time, p.position.y + vel.y * delta_time);
 
       p.alpha = fit_range(p.age, 0, p.life, 1.0, 0.0);
       if (p.age > p.life) p.dead = true;
-      p.position.set(p.position.x + vel.x * delta_time, p.position.y + vel.y * delta_time);
+
+      if (this.kill_function) {
+        for (let p of this.particles) {
+          if (this.kill_function(p)) p.dead = true;
+        }
+      }
+
+      this.particles = this.particles.filter((value) => {
+        return value.dead == false;
+      });
+      if (this.particles.length > this.limit_num) {
+        this.particles.splice(this.particles.length - this.limit_num - 2, this.particles.length - this.limit_num);
+        // this.particles.splice(0, this.limit_num);
+      }
     }
   }
 }

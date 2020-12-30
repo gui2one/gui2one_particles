@@ -7,7 +7,10 @@
     <title>gui2one Particles</title>
   </head>
   <body>
-    <div id="parent-div"><h1>Hello</h1></div>
+    <div id="parent-div"></div>
+    <div class="content">
+      <h1>Bonne Année</h1>
+    </div>
 
     <!-- <canvas id="pixi-canvas" width="500" height="500"></canvas> -->
     <script src="./gui2one_particles.js"></script>
@@ -68,7 +71,11 @@
       line_emitter.amount_per_second = 20;
       line_emitter.limit_num = 5000;
 
+      // line_emitter.kill_function = (p) => {
+      //   return p.position.y > 300;
+      // };
       ps.emitters.push(line_emitter);
+
       let bloom = new AdvancedBloomFilter({
         bloomScale: 1.0,
         threshold: 0.2,
@@ -81,9 +88,10 @@
       app.stage.addChild(ps.emitters[0].pixi_container);
       // ps.emitters[0].startEmission();
 
-      app.ticker.add(() => {});
+      // app.ticker.add(() => {});
 
-      function animate() {
+      let inc = 0;
+      function update() {
         let line_emitter = ps.emitters[0];
         line_emitter.width = width * 1.1;
         line_emitter.position.x = width / 2 - line_emitter.width / 2;
@@ -96,18 +104,38 @@
 
         let delta = ps.clock.getDeltaMillis();
         let fps = 1000 / delta;
-
+      }
+      // window.setInterval(update.bind(this), 1000 / 60.0);
+      function animate() {
+        update();
         requestAnimationFrame(animate);
       }
 
       animate();
 
+      document.addEventListener("visibilitychange", function () {
+        // console.log(event);
+        // console.log(event.target.visibilityState);
+
+        if (event.target.visibilityState == "hidden") {
+          ps.clock.started = false;
+        } else {
+          ps.clock.start();
+        }
+      });
       window.addEventListener("resize", () => {
         parent_rect = parent_div.getBoundingClientRect();
+
         width = parent_rect.width;
         height = parent_rect.height;
         app.renderer.resize(width, height);
+
+        line_emitter.amount_per_second = 0.01 * width;
       });
+
+      // trigger resize event
+      let ev = new Event("resize");
+      window.dispatchEvent(ev);
 
       window.addEventListener("mousedown", function (event) {
         line_emitter.stopEmission();

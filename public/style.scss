@@ -34,6 +34,25 @@ h5 {
   margin: 0 auto;
   height: 100vh;
 }
+
+.content {
+  position: absolute;
+  width: 500px;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2000000;
+  text-align: center;
+
+  color: white;
+
+  margin: 0;
+  padding: 1em;
+  background-color: rgba(white, 0.1);
+
+  backdrop-filter: blur(8px);
+}
+
 canvas {
   display: block;
   padding: 0;

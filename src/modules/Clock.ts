@@ -20,18 +20,22 @@ export default class Clock {
       this.started = true;
 
       this.start_time = Date.now();
+      this.millis = 0;
       //   console.log("clock start time : ", this.start_time);
     }
   }
 
   update() {
-    if (!this.started) {
-      this.start();
-    }
-    this.old_millis = this.millis;
-    this.millis = Date.now() - this.start_time;
+    // if (!this.started) {
+    //   this.start();
+    // }
 
-    this.delta_millis = this.millis - this.old_millis;
+    if (this.started) {
+      this.old_millis = this.millis;
+      this.millis = Date.now() - this.start_time;
+
+      this.delta_millis = this.millis - this.old_millis;
+    }
     // console.log(this.millis);
   }
 

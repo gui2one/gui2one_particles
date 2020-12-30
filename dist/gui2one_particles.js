@@ -146,18 +146,21 @@ function () {
   Clock.prototype.start = function () {
     if (!this.started) {
       this.started = true;
-      this.start_time = Date.now(); //   console.log("clock start time : ", this.start_time);
+      this.start_time = Date.now();
+      this.millis = 0; //   console.log("clock start time : ", this.start_time);
     }
   };
 
   Clock.prototype.update = function () {
-    if (!this.started) {
-      this.start();
-    }
+    // if (!this.started) {
+    //   this.start();
+    // }
+    if (this.started) {
+      this.old_millis = this.millis;
+      this.millis = Date.now() - this.start_time;
+      this.delta_millis = this.millis - this.old_millis;
+    } // console.log(this.millis);
 
-    this.old_millis = this.millis;
-    this.millis = Date.now() - this.start_time;
-    this.delta_millis = this.millis - this.old_millis; // console.log(this.millis);
   };
 
   Clock.prototype.getDeltaMillis = function () {
@@ -49622,14 +49625,6 @@ function () {
       }
     }
 
-    this.particles = this.particles.filter(function (value) {
-      return value.dead == false;
-    });
-
-    if (this.particles.length > this.limit_num) {
-      this.particles.splice(this.particles.length - this.limit_num - 2, this.particles.length - this.limit_num); // this.particles.splice(0, this.limit_num);
-    }
-
     for (var _i = 0, _a = this.particles; _i < _a.length; _i++) {
       var p = _a[_i]; // velocity
 
@@ -49655,9 +49650,24 @@ function () {
       clr.b = Math.round(clr.b * 255);
       p.tint = (clr.r << 16) + (clr.g << 8) + (clr.b << 0); // console.log(p.tint);
 
+      p.position.set(p.position.x + vel.x * delta_time, p.position.y + vel.y * delta_time);
       p.alpha = Utils_1.fit_range(p.age, 0, p.life, 1.0, 0.0);
       if (p.age > p.life) p.dead = true;
-      p.position.set(p.position.x + vel.x * delta_time, p.position.y + vel.y * delta_time);
+
+      if (this.kill_function) {
+        for (var _c = 0, _d = this.particles; _c < _d.length; _c++) {
+          var p_1 = _d[_c];
+          if (this.kill_function(p_1)) p_1.dead = true;
+        }
+      }
+
+      this.particles = this.particles.filter(function (value) {
+        return value.dead == false;
+      });
+
+      if (this.particles.length > this.limit_num) {
+        this.particles.splice(this.particles.length - this.limit_num - 2, this.particles.length - this.limit_num); // this.particles.splice(0, this.limit_num);
+      }
     }
   };
 
@@ -50876,7 +50886,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60090" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50338" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
