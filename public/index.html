@@ -8,11 +8,12 @@
   </head>
   <body>
     <h1>Hello</h1>
-    <canvas id="pixi-canvas" width="500" height="500"></canvas>
+    <div id="parent-div"></div>
+    <!-- <canvas id="pixi-canvas" width="500" height="500"></canvas> -->
     <script src="./gui2one_particles.js"></script>
     <script>
-      const rev_slider = document.getElementById("pixi-canvas");
-      // console.log(rev_slider.getBoundingClientRect());
+      const parent_div = document.getElementById("parent-div");
+      let parent_rect = parent_div.getBoundingClientRect();
 
       let timer;
       let mouseStopped = true;
@@ -24,11 +25,11 @@
       canvas.style.width = "100%";
       canvas.style.height = "100%";
       canvas.style.pointerEvents = "none";
-      document.body.appendChild(canvas);
+      parent_div.appendChild(canvas);
       const pixi_canvas = document.getElementById("pixi-canvas");
       // console.log(window.location);
-      let width = window.innerWidth;
-      let height = window.innerHeight;
+      let width = parent_rect.width;
+      let height = parent_rect.height;
       const app = new PIXI.Application({
         width: width,
         height: height,
@@ -38,12 +39,13 @@
 
       const ps = new ParticleSystem();
       let gravity = new ParticleForceDirectional();
-      gravity.setDirection(new Vector2(0, 100));
+      gravity.setDirection(new Vector2(0, 50));
       gravity.treat_as_wind = true;
       ps.forces.push(gravity);
 
       let noise_force = new ParticleForceNoise();
       noise_force.setSeed(Math.random());
+      noise_force.power = 0.25;
       ps.forces.push(noise_force);
 
       let point_force = new ParticleForcePoint();
@@ -94,14 +96,16 @@
       });
 
       window.addEventListener("resize", () => {
-        width = window.innerWidth;
-        height = window.innerHeight;
+        parent_rect = parent_div.getBoundingClientRect();
+        width = parent_rect.width;
+        height = parent_rect.height;
         app.renderer.resize(width, height);
       });
 
-      window.addEventListener("mousemove", (event) => {
-        point_force.position.x = event.clientX;
-        point_force.position.y = event.clientY;
+      parent_div.addEventListener("mousemove", (event) => {
+        // console.log(event);
+        point_force.position.x = event.layerX;
+        point_force.position.y = event.layerY;
         mouseStopped = false;
         clearTimeout(timer);
         timer = setTimeout(() => {

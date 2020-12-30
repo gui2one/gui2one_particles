@@ -10,6 +10,13 @@ body {
   background-color: brown;
 }
 
+#parent-div {
+  position: relative;
+  width: 50%;
+  margin: 0 auto;
+  height: 250px;
+}
+
 canvas {
   display: block;
   padding: 0;

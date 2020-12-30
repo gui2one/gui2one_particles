@@ -75,7 +75,7 @@ export class ParticleForceNoise extends ParticleForceBase {
   constructor() {
     super();
 
-    this.noise = new Noise.Noise(0.2);
+    this.noise = new Noise.Noise();
     console.log(this.noise.simplex2(11.0, 1.0));
   }
 

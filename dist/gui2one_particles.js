@@ -50193,7 +50193,7 @@ function (_super) {
 
     _this.power = 1.0;
     _this.seed = 0.123;
-    _this.noise = new Noise.Noise(0.2);
+    _this.noise = new Noise.Noise();
     console.log(_this.noise.simplex2(11.0, 1.0));
     return _this;
   }
