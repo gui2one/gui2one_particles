@@ -49534,9 +49534,11 @@ var ParticleEmitter =
 function () {
   function ParticleEmitter() {
     this.limit_num = 2000;
+    this.emission_timer = 0.0;
     this.rand_vel_amount = 10.0;
     this.min_particles_scale = 0.1;
     this.max_particles_scale = 1.0;
+    this.do_emission = true;
     this.pixi_container = new PIXI.Container(); // this.pixi_container.autoResize = true;
 
     this.textures = [];
@@ -49599,22 +49601,26 @@ function () {
   ParticleEmitter.prototype.setNewParticlesPos = function (num) {};
 
   ParticleEmitter.prototype.startEmission = function () {
-    var _this = this;
-
-    if (this.emit_interval === undefined) {
-      this.emit_interval = setInterval(function () {
-        _this.emitParticlesBase(1);
-      }, 1000 / this.amount_per_second);
-    }
+    this.do_emission = true;
   };
 
   ParticleEmitter.prototype.stopEmission = function () {
-    clearInterval(this.emit_interval);
-    this.emit_interval = undefined;
+    this.do_emission = false;
   };
 
   ParticleEmitter.prototype.update = function (ps) {
-    var forces = ps.forces; // this.emit(1);
+    var delta_time = ps.clock.getDeltaTime();
+    var forces = ps.forces;
+
+    if (this.do_emission) {
+      var trigger_time = 1.0 / this.amount_per_second;
+      this.emission_timer += delta_time;
+
+      if (this.emission_timer > trigger_time) {
+        this.emitParticlesBase(Math.floor(this.emission_timer * this.amount_per_second));
+        this.emission_timer = 0.0;
+      }
+    }
 
     this.particles = this.particles.filter(function (value) {
       return value.dead == false;
@@ -49623,8 +49629,6 @@ function () {
     if (this.particles.length > this.limit_num) {
       this.particles.splice(this.particles.length - this.limit_num - 2, this.particles.length - this.limit_num); // this.particles.splice(0, this.limit_num);
     }
-
-    var delta_time = ps.clock.getDeltaTime();
 
     for (var _i = 0, _a = this.particles; _i < _a.length; _i++) {
       var p = _a[_i]; // velocity

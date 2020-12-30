@@ -7,8 +7,8 @@
     <title>gui2one Particles</title>
   </head>
   <body>
-    <h1>Hello</h1>
-    <div id="parent-div"></div>
+    <div id="parent-div"><h1>Hello</h1></div>
+
     <!-- <canvas id="pixi-canvas" width="500" height="500"></canvas> -->
     <script src="./gui2one_particles.js"></script>
     <script>
@@ -18,16 +18,16 @@
       let timer;
       let mouseStopped = true;
       let canvas = document.createElement("canvas");
-      // console.log(rev_slider.parentNode);
+      parent_div.appendChild(canvas);
       canvas.style.position = "absolute";
       canvas.style.left = "0px";
       canvas.style.top = "0px";
       canvas.style.width = "100%";
       canvas.style.height = "100%";
       canvas.style.pointerEvents = "none";
-      parent_div.appendChild(canvas);
+
       const pixi_canvas = document.getElementById("pixi-canvas");
-      // console.log(window.location);
+
       let width = parent_rect.width;
       let height = parent_rect.height;
       const app = new PIXI.Application({
@@ -65,8 +65,9 @@
       line_emitter.min_particles_scale = 0.2;
       line_emitter.max_particles_scale = 0.5;
       line_emitter.rand_vel_amount = 0.0;
-      line_emitter.amount_per_second = 100;
+      line_emitter.amount_per_second = 20;
       line_emitter.limit_num = 5000;
+
       ps.emitters.push(line_emitter);
       let bloom = new AdvancedBloomFilter({
         bloomScale: 1.0,
@@ -78,9 +79,11 @@
       });
       ps.emitters[0].pixi_container.filters = [bloom];
       app.stage.addChild(ps.emitters[0].pixi_container);
-      ps.emitters[0].startEmission();
+      // ps.emitters[0].startEmission();
 
-      app.ticker.add(() => {
+      app.ticker.add(() => {});
+
+      function animate() {
         let line_emitter = ps.emitters[0];
         line_emitter.width = width * 1.1;
         line_emitter.position.x = width / 2 - line_emitter.width / 2;
@@ -93,7 +96,11 @@
 
         let delta = ps.clock.getDeltaMillis();
         let fps = 1000 / delta;
-      });
+
+        requestAnimationFrame(animate);
+      }
+
+      animate();
 
       window.addEventListener("resize", () => {
         parent_rect = parent_div.getBoundingClientRect();
@@ -102,7 +109,14 @@
         app.renderer.resize(width, height);
       });
 
-      parent_div.addEventListener("mousemove", (event) => {
+      window.addEventListener("mousedown", function (event) {
+        line_emitter.stopEmission();
+      });
+
+      window.addEventListener("mouseup", function (event) {
+        line_emitter.startEmission();
+      });
+      parent_div.addEventListener("mousemove", function (event) {
         // console.log(event);
         point_force.position.x = event.layerX;
         point_force.position.y = event.layerY;

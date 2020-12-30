@@ -11,6 +11,8 @@ export default class ParticleEmitter {
   amount_per_second: number;
   limit_num: number = 2000;
 
+  protected emission_timer: number = 0.0;
+
   emit_vel: Vector2;
   rand_vel_amount: number = 10.0;
 
@@ -22,6 +24,8 @@ export default class ParticleEmitter {
   max_particles_scale: Number = 1.0;
   scale_over_life: FloatGradientRamp;
   color_over_life: ColorGradientRamp;
+
+  do_emission: boolean = true;
 
   constructor() {
     this.pixi_container = new PIXI.Container();
@@ -94,22 +98,27 @@ export default class ParticleEmitter {
   setNewParticlesPos(num: number) {}
 
   startEmission() {
-    if (this.emit_interval === undefined) {
-      this.emit_interval = setInterval(() => {
-        this.emitParticlesBase(1);
-      }, 1000 / this.amount_per_second);
-    }
+    this.do_emission = true;
   }
 
   stopEmission() {
-    clearInterval(this.emit_interval);
-    this.emit_interval = undefined;
+    this.do_emission = false;
   }
 
   update(ps: ParticleSystem) {
+    const delta_time = ps.clock.getDeltaTime();
+
     let forces = ps.forces;
 
-    // this.emit(1);
+    if (this.do_emission) {
+      let trigger_time = 1.0 / this.amount_per_second;
+
+      this.emission_timer += delta_time;
+      if (this.emission_timer > trigger_time) {
+        this.emitParticlesBase(Math.floor(this.emission_timer * this.amount_per_second));
+        this.emission_timer = 0.0;
+      }
+    }
     this.particles = this.particles.filter((value) => {
       return value.dead == false;
     });
@@ -118,7 +127,6 @@ export default class ParticleEmitter {
       // this.particles.splice(0, this.limit_num);
     }
 
-    const delta_time = ps.clock.getDeltaTime();
     for (let p of this.particles) {
       // velocity
       let vel = p.velocity.clone();

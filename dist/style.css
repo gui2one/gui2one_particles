@@ -8,20 +8,28 @@ body {
 
 body {
   background-color: brown;
+  background: linear-gradient(0deg, black 0px, #0a0a31 200%);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0px;
+  padding: 0.1em;
 }
 
 #parent-div {
   position: relative;
-  width: 50%;
+  width: 100%;
   margin: 0 auto;
-  height: 250px;
+  height: 100vh;
 }
 
 canvas {
   display: block;
   padding: 0;
   margin: 0;
-  background: -webkit-gradient(linear, left bottom, left top, color-stop(50%, black), color-stop(150%, #0a0a31));
-  background: linear-gradient(0deg, black 50%, #0a0a31 150%);
 }
 /*# sourceMappingURL=style.css.map */
