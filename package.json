@@ -12,7 +12,8 @@
     "build": "parcel watch ./src/modules/ParticleSystem.ts ./src/style.scss  --target browser  --out-file gui2one_particles.js",
     "serve": "npx live-server ./dist",
     "watch_prebuild": "npm-watch prebuild",
-    "watch_build": "npm-watch prebuild"
+    "watch_build": "npm-watch prebuild",
+    "full_dev": "run-p watch_prebuild build serve"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +23,7 @@
     "babel-preset-env": "^1.7.0",
     "cssnano": "^4.1.10",
     "ncp": "^2.0.0",
+    "npm-run-all": "^4.1.5",
     "npm-watch": "^0.7.0",
     "sass": "^1.30.0",
     "typescript": "^4.1.3"

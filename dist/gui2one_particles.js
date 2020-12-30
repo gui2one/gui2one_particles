@@ -49535,14 +49535,10 @@ function () {
   function ParticleEmitter() {
     this.limit_num = 2000;
     this.rand_vel_amount = 10.0;
+    this.particles_scale = 1.0;
     this.pixi_container = new PIXI.Container(); // this.pixi_container.autoResize = true;
 
     this.textures = [];
-    var img = new Image();
-    img.src = "snowflake_small.png";
-    var base = new PIXI.BaseTexture(img);
-    this.textures.push(new PIXI.Texture(base)); // return you the texture
-
     this.particles = [];
     this.emit_vel = new Vector2_1.default(0.0, 0.0);
     this.position = new Vector2_1.default();
@@ -49556,6 +49552,13 @@ function () {
     this.color_over_life = new GradientRamp_1.ColorGradientRamp(); // this.color_over_life.getValueAt(0.5);
   }
 
+  ParticleEmitter.prototype.addTexture = function (file_path) {
+    var img = new Image();
+    img.src = file_path;
+    var base = new PIXI.BaseTexture(img);
+    this.textures.push(new PIXI.Texture(base)); // return you the texture
+  };
+
   ParticleEmitter.prototype.emitParticlesBase = function (num) {
     this.setNewParticlesPos(num);
 
@@ -49563,7 +49566,7 @@ function () {
       // const p = <Particle>PIXI.Sprite.from("snowflake.png"); // as Particle;
       var p = this.particles[this.particles.length - 1 - i];
       p.anchor.set(0.5);
-      p.scale.set(Utils_1.fit_range(Math.random(), 0, 1, 0.2, 0.08));
+      p.scale.set(Utils_1.fit_range(Math.random(), 0, 1, 0.1, this.particles_scale));
       p.mass = Utils_1.fit_range(Math.random(), 0, 1, 0.1, 1.0);
       p.tint = 0xff0000;
       this.rand_vel_amount;
@@ -49574,10 +49577,11 @@ function () {
       new_vel.add(rand_vel);
       p.velocity = new_vel;
       var emitter_pos = this.position.clone();
-      p.rotation_speed = Math.random();
+      p.rotation_speed = Utils_1.fit_range(Math.random(), 0, 1, 0.0, 0.3);
       p.rotate_clockwise = Math.random() > 0.5;
       p.life = 15.0;
-      p.texture = this.textures[0];
+      var rand_tex_id = Math.floor(Math.random() * this.textures.length);
+      p.texture = this.textures[rand_tex_id];
     }
 
     this.pixi_container.removeChildren();
@@ -50465,7 +50469,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50112" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59176" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

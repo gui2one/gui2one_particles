@@ -38,7 +38,7 @@
 
       const ps = new ParticleSystem();
       let gravity = new ParticleForceDirectional();
-      gravity.setDirection(new Vector2(0, 100));
+      gravity.setDirection(new Vector2(0, 30));
       gravity.treat_as_wind = true;
       ps.forces.push(gravity);
 
@@ -50,8 +50,11 @@
       blur.blur = 6;
 
       let line_emitter = new LineEmitter();
+      line_emitter.addTexture("snowflakes/snowflake_small.1.png");
+      line_emitter.addTexture("snowflakes/snowflake_small.2.png");
+      line_emitter.addTexture("snowflakes/snowflake_small.3.png");
       line_emitter.width = 250;
-      line_emitter.amount_per_second = 200;
+      line_emitter.amount_per_second = 2;
       line_emitter.limit_num = 5000;
       ps.emitters.push(line_emitter);
       let bloom = new AdvancedBloomFilter({

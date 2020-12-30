@@ -18,6 +18,7 @@ export default class ParticleEmitter {
   pixi_container: PIXI.Container;
   textures: PIXI.Texture[];
 
+  particles_scale: Number = 1.0;
   scale_over_life: FloatGradientRamp;
   color_over_life: ColorGradientRamp;
 
@@ -26,12 +27,6 @@ export default class ParticleEmitter {
     // this.pixi_container.autoResize = true;
 
     this.textures = [];
-
-    var img = new Image();
-    img.src = "snowflake_small.png";
-    var base = new PIXI.BaseTexture(img);
-
-    this.textures.push(new PIXI.Texture(base)); // return you the texture
 
     this.particles = [];
     this.emit_vel = new Vector2(0.0, 0.0);
@@ -50,13 +45,21 @@ export default class ParticleEmitter {
     // this.color_over_life.getValueAt(0.5);
   }
 
+  addTexture(file_path: string) {
+    var img = new Image();
+    img.src = file_path;
+    var base = new PIXI.BaseTexture(img);
+
+    this.textures.push(new PIXI.Texture(base)); // return you the texture
+  }
+
   emitParticlesBase(num: number) {
     this.setNewParticlesPos(num);
     for (let i = 0; i < num; i++) {
       // const p = <Particle>PIXI.Sprite.from("snowflake.png"); // as Particle;
       let p = this.particles[this.particles.length - 1 - i];
       p.anchor.set(0.5);
-      p.scale.set(fit_range(Math.random(), 0, 1, 0.2, 0.08));
+      p.scale.set(fit_range(Math.random(), 0, 1, 0.1, this.particles_scale));
       p.mass = fit_range(Math.random(), 0, 1, 0.1, 1.0);
       p.tint = 0xff0000;
 
@@ -71,10 +74,12 @@ export default class ParticleEmitter {
       p.velocity = new_vel;
       let emitter_pos = this.position.clone();
 
-      p.rotation_speed = Math.random();
+      p.rotation_speed = fit_range(Math.random(), 0, 1, 0.0, 0.3);
       p.rotate_clockwise = Math.random() > 0.5;
       p.life = 15.0;
-      p.texture = this.textures[0];
+
+      let rand_tex_id = Math.floor(Math.random() * this.textures.length);
+      p.texture = this.textures[rand_tex_id];
     }
 
     this.pixi_container.removeChildren();
