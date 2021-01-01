@@ -40,7 +40,7 @@
         transparent: true,
       });
 
-      const ps = new ParticleSystem();
+      const ps = new ParticleSystem(app.renderer);
       let gravity = new ParticleForceDirectional();
       gravity.setDirection(new Vector2(0, 50));
       gravity.treat_as_wind = true;
@@ -158,14 +158,7 @@
       let ev = new Event("resize");
       window.dispatchEvent(ev);
 
-      window.addEventListener("mousedown", function (event) {
-        line_emitter.stopEmission();
-      });
-
-      window.addEventListener("mouseup", function (event) {
-        line_emitter.startEmission();
-      });
-      parent_div.addEventListener("mousemove", function (event) {
+      function onClick(event) {
         // console.log(event);
         point_force.position.x = event.layerX;
         point_force.position.y = event.layerY;
@@ -174,7 +167,17 @@
         timer = setTimeout(() => {
           mouseStopped = true;
         }, 300);
+      }
+      window.addEventListener("mousedown", function (event) {
+        line_emitter.stopEmission();
       });
+
+      window.addEventListener("mouseup", function (event) {
+        line_emitter.startEmission();
+      });
+
+      parent_div.addEventListener("mousedown", onClick);
+      parent_div.addEventListener("touchstart", onClick);
     </script>
   </body>
 </html>

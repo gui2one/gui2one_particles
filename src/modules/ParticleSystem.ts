@@ -11,13 +11,11 @@ export default class ParticleSystem {
   emitters: ParticleEmitter[];
   forces: Array<ParticleForceBase>;
   clock: Clock;
-  constructor() {
-    // super();
-    // this.autoResize = true;
+  renderer: PIXI.Renderer;
+  constructor(renderer: PIXI.Renderer) {
+    this.renderer = renderer;
     this.emitters = Array<ParticleEmitter>();
 
-    // this.emitters[0].position.x = 250;
-    // this.emitters[0].position.y = 100;
     this.forces = [];
 
     this.clock = new Clock();
@@ -26,7 +24,6 @@ export default class ParticleSystem {
   update() {
     this.clock.update();
 
-    //emit particles
     for (let emitter of this.emitters) {
       emitter.update(this);
     }

@@ -50953,18 +50953,15 @@ var PIXI = __importStar(require("pixi.js"));
 var ParticleSystem =
 /** @class */
 function () {
-  function ParticleSystem() {
-    // super();
-    // this.autoResize = true;
-    this.emitters = Array(); // this.emitters[0].position.x = 250;
-    // this.emitters[0].position.y = 100;
-
+  function ParticleSystem(renderer) {
+    this.renderer = renderer;
+    this.emitters = Array();
     this.forces = [];
     this.clock = new Clock_1.default();
   }
 
   ParticleSystem.prototype.update = function () {
-    this.clock.update(); //emit particles
+    this.clock.update();
 
     for (var _i = 0, _a = this.emitters; _i < _a.length; _i++) {
       var emitter = _a[_i];
