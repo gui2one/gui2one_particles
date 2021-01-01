@@ -9,6 +9,7 @@ export default class Particle extends PIXI.Sprite {
   dead: boolean;
   rotate_clockwise: boolean;
   rotation_speed: number = 1.0;
+  scale_mult: number = 1.0;
   constructor() {
     super();
     // this.position = new Vector2();
@@ -19,5 +20,7 @@ export default class Particle extends PIXI.Sprite {
     this.age = 0;
     this.rotate_clockwise = true;
     this.dead = false;
+    // this.anchor.x = 0.5;
+    // this.anchor.y = 10;
   }
 }

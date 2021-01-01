@@ -22,8 +22,10 @@ export default class ParticleEmitter {
   pixi_container: PIXI.Container;
   textures: PIXI.Texture[];
 
-  min_particles_scale: Number = 0.1;
+  min_particles_scale: Number = 1.0;
   max_particles_scale: Number = 1.0;
+
+  scale_mult: number = 1.0;
   scale_over_life: FloatGradientRamp;
   color_over_life: ColorGradientRamp;
 
@@ -68,8 +70,9 @@ export default class ParticleEmitter {
       for (let i = 0; i < num; i++) {
         // const p = <Particle>PIXI.Sprite.from("snowflake.png"); // as Particle;
         let p = this.particles[this.particles.length - 1 - i];
-        p.anchor.set(0.5);
-        p.scale.set(fit_range(Math.random(), 0, 1, this.min_particles_scale, this.max_particles_scale));
+        p.anchor.set(0.5, 0.5);
+        p.scale_mult = fit_range(Math.random(), 0, 1, this.min_particles_scale, this.max_particles_scale);
+        p.scale.set(this.scale_over_life.getValueAt(0.0) * p.scale_mult * this.scale_mult);
         p.mass = fit_range(Math.random(), 0, 1, 0.1, 1.0);
         p.tint = 0xff0000;
 
@@ -157,7 +160,7 @@ export default class ParticleEmitter {
       p.rotation += delta_time * p.rotation_speed * (p.rotate_clockwise ? 1 : -1);
       let scale_now = this.scale_over_life.getValueAt(clamp(p.age / p.life, 0, 1));
       // let scale = fit_range(p.age, 0, p.life, 0.1, 0.02);
-      p.scale.set(scale_now, scale_now);
+      p.scale.set(scale_now * p.scale_mult * this.scale_mult, scale_now * p.scale_mult * this.scale_mult);
 
       let clr = this.color_over_life.getValueAt(p.age / p.life);
       clr.r = Math.round(clr.r * 255);
@@ -254,19 +257,19 @@ export class TextureEmitter extends ParticleEmitter {
       canvas.height = h;
       ctx.drawImage(img, 0, 0, w, h);
       let pix_data = ctx.getImageData(0, 0, w, h);
-      console.log(pix_data.data.length);
+      // console.log(pix_data.data.length);
 
       for (let y = 0; y < h; y++) {
         for (let x = 0; x < w; x++) {
           let pix_id = (x + y * w) * 4; // 4 channels (rgba)
           let pix_value = pix_data.data[pix_id];
           if (pix_value > 200) {
-            this.points.push(new Vector2(x, y));
+            this.points.push(new Vector2(x * sampling - img.width / 2, y * sampling - img.height / 2));
           }
         }
       }
 
-      console.log(this.loaded);
+      // console.log(this.loaded);
       this.loaded = true;
     };
   }

@@ -49123,7 +49123,8 @@ function (_super) {
   function Particle() {
     var _this = _super.call(this) || this;
 
-    _this.rotation_speed = 1.0; // this.position = new Vector2();
+    _this.rotation_speed = 1.0;
+    _this.scale_mult = 1.0; // this.position = new Vector2();
 
     _this.velocity = new Vector2_1.default();
     _this.mass = 1;
@@ -49134,7 +49135,8 @@ function (_super) {
     _this.age = 0;
     _this.rotate_clockwise = true;
     _this.dead = false;
-    return _this;
+    return _this; // this.anchor.x = 0.5;
+    // this.anchor.y = 10;
   }
 
   return Particle;
@@ -49551,8 +49553,9 @@ function () {
     this.limit_num = 2000;
     this.emission_timer = 0.0;
     this.rand_vel_amount = 10.0;
-    this.min_particles_scale = 0.1;
+    this.min_particles_scale = 1.0;
     this.max_particles_scale = 1.0;
+    this.scale_mult = 1.0;
     this.do_emission = true;
     this.forces = new Array();
     this.pixi_container = new PIXI.Container(); // this.pixi_container.autoResize = true;
@@ -49584,8 +49587,9 @@ function () {
       for (var i = 0; i < num; i++) {
         // const p = <Particle>PIXI.Sprite.from("snowflake.png"); // as Particle;
         var p = this.particles[this.particles.length - 1 - i];
-        p.anchor.set(0.5);
-        p.scale.set(Utils_1.fit_range(Math.random(), 0, 1, this.min_particles_scale, this.max_particles_scale));
+        p.anchor.set(0.5, 0.5);
+        p.scale_mult = Utils_1.fit_range(Math.random(), 0, 1, this.min_particles_scale, this.max_particles_scale);
+        p.scale.set(this.scale_over_life.getValueAt(0.0) * p.scale_mult * this.scale_mult);
         p.mass = Utils_1.fit_range(Math.random(), 0, 1, 0.1, 1.0);
         p.tint = 0xff0000;
         this.rand_vel_amount;
@@ -49674,7 +49678,7 @@ function () {
       p.rotation += delta_time * p.rotation_speed * (p.rotate_clockwise ? 1 : -1);
       var scale_now = this.scale_over_life.getValueAt(Utils_1.clamp(p.age / p.life, 0, 1)); // let scale = fit_range(p.age, 0, p.life, 0.1, 0.02);
 
-      p.scale.set(scale_now, scale_now);
+      p.scale.set(scale_now * p.scale_mult * this.scale_mult, scale_now * p.scale_mult * this.scale_mult);
       var clr = this.color_over_life.getValueAt(p.age / p.life);
       clr.r = Math.round(clr.r * 255);
       clr.g = Math.round(clr.g * 255);
@@ -49786,8 +49790,7 @@ function (_super) {
       canvas.width = w;
       canvas.height = h;
       ctx.drawImage(img, 0, 0, w, h);
-      var pix_data = ctx.getImageData(0, 0, w, h);
-      console.log(pix_data.data.length);
+      var pix_data = ctx.getImageData(0, 0, w, h); // console.log(pix_data.data.length);
 
       for (var y = 0; y < h; y++) {
         for (var x = 0; x < w; x++) {
@@ -49796,12 +49799,12 @@ function (_super) {
           var pix_value = pix_data.data[pix_id];
 
           if (pix_value > 200) {
-            _this.points.push(new Vector2_1.default(x, y));
+            _this.points.push(new Vector2_1.default(x * sampling - img.width / 2, y * sampling - img.height / 2));
           }
         }
-      }
+      } // console.log(this.loaded);
 
-      console.log(_this.loaded);
+
       _this.loaded = true;
     };
   };

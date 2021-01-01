@@ -49,7 +49,7 @@
       let noise_force = new ParticleForceNoise();
       noise_force.setSeed(Math.random());
       noise_force.power = 0.05;
-      ps.forces.push(noise_force);
+      // ps.forces.push(noise_force);
 
       let point_force = new ParticleForcePoint();
 
@@ -65,8 +65,9 @@
       line_emitter.addTexture("snowflakes/snowflake_small.3.png");
       line_emitter.width = 250;
 
-      line_emitter.min_particles_scale = 0.2;
-      line_emitter.max_particles_scale = 0.5;
+      line_emitter.min_particles_scale = 1.0;
+      line_emitter.max_particles_scale = 0.3;
+      line_emitter.scale_mult = 0.3;
       line_emitter.rand_vel_amount = 0.0;
       line_emitter.amount_per_second = 20;
       line_emitter.limit_num = 5000;
@@ -79,20 +80,21 @@
 
       let texture_emitter = new TextureEmitter();
       texture_emitter.addTexture("snowflakes/snowflake_small.1.png");
-      texture_emitter.position.x = 50;
-      texture_emitter.position.y = 50;
+      texture_emitter.position.x = width / 2;
+      texture_emitter.position.y = height / 2;
 
       texture_emitter.rand_vel_amount = 0.0;
       texture_emitter.amount_per_second = 200;
-      texture_emitter.min_particles_scale = 0.1;
-      texture_emitter.max_particles_scale = 0.1;
-      texture_emitter.setTexture("texture_emitter.jpg");
+      // texture_emitter.min_particles_scale = 0.1;
+      // texture_emitter.max_particles_scale = 0.1;
+      texture_emitter.setTexture("texture_emitter_crop.jpg");
 
-      texture_emitter.forces.push(noise_force);
+      // texture_emitter.forces.push(noise_force);
 
+      texture_emitter.scale_mult = 0.28;
       texture_emitter.scale_over_life.setKeyValue(0, 0.0);
       texture_emitter.scale_over_life.setKeyValue(1, 0.0);
-      texture_emitter.scale_over_life.addKey(0.5, 0.1);
+      texture_emitter.scale_over_life.addKey(0.5, 1);
       ps.emitters.push(texture_emitter);
 
       let bloom = new AdvancedBloomFilter({
@@ -114,7 +116,7 @@
       function update() {
         line_emitter.width = width * 1.1;
         // line_emitter.position.x = width / 2 - line_emitter.width / 2;
-        // line_emitter.position.y = -10;
+        line_emitter.position.y = -10;
 
         // console.log(mouseStopped);
         if (mouseStopped) point_force.power = 0;
