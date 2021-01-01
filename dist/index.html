@@ -44,11 +44,11 @@
       let gravity = new ParticleForceDirectional();
       gravity.setDirection(new Vector2(0, 50));
       gravity.treat_as_wind = true;
-      ps.forces.push(gravity);
+      // ps.forces.push(gravity);
 
       let noise_force = new ParticleForceNoise();
       noise_force.setSeed(Math.random());
-      noise_force.power = 0.25;
+      noise_force.power = 0.05;
       ps.forces.push(noise_force);
 
       let point_force = new ParticleForcePoint();
@@ -70,11 +70,30 @@
       line_emitter.rand_vel_amount = 0.0;
       line_emitter.amount_per_second = 20;
       line_emitter.limit_num = 5000;
+      line_emitter.forces.push(gravity);
 
       // line_emitter.kill_function = (p) => {
       //   return p.position.y > 300;
       // };
       ps.emitters.push(line_emitter);
+
+      let texture_emitter = new TextureEmitter();
+      texture_emitter.addTexture("snowflakes/snowflake_small.1.png");
+      texture_emitter.position.x = 50;
+      texture_emitter.position.y = 50;
+
+      texture_emitter.rand_vel_amount = 0.0;
+      texture_emitter.amount_per_second = 200;
+      texture_emitter.min_particles_scale = 0.1;
+      texture_emitter.max_particles_scale = 0.1;
+      texture_emitter.setTexture("texture_emitter.jpg");
+
+      texture_emitter.forces.push(noise_force);
+
+      texture_emitter.scale_over_life.setKeyValue(0, 0.0);
+      texture_emitter.scale_over_life.setKeyValue(1, 0.0);
+      texture_emitter.scale_over_life.addKey(0.5, 0.1);
+      ps.emitters.push(texture_emitter);
 
       let bloom = new AdvancedBloomFilter({
         bloomScale: 1.0,
@@ -84,18 +103,18 @@
         blur: 5,
         resolution: 1,
       });
-      ps.emitters[0].pixi_container.filters = [bloom];
-      app.stage.addChild(ps.emitters[0].pixi_container);
-      // ps.emitters[0].startEmission();
+      line_emitter.pixi_container.filters = [bloom];
+      app.stage.addChild(line_emitter.pixi_container);
+      app.stage.addChild(texture_emitter.pixi_container);
+      // line_emitter.startEmission();
 
       // app.ticker.add(() => {});
 
       let inc = 0;
       function update() {
-        let line_emitter = ps.emitters[0];
         line_emitter.width = width * 1.1;
-        line_emitter.position.x = width / 2 - line_emitter.width / 2;
-        line_emitter.position.y = -10;
+        // line_emitter.position.x = width / 2 - line_emitter.width / 2;
+        // line_emitter.position.y = -10;
 
         // console.log(mouseStopped);
         if (mouseStopped) point_force.power = 0;

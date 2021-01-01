@@ -9,6 +9,16 @@ export const clamp = (src, min, max): number => {
   else return src;
 };
 
+export const min = (val1: number, val2: number): number => {
+  if (val1 < val2) return val1;
+  else return val2;
+};
+
+export const max = (val1: number, val2: number): number => {
+  if (val1 > val2) return val1;
+  else return val2;
+};
+
 export const lerp = (ratio, value1, value2): number => {
   return (value2 - value1) * clamp(ratio, 0, 1) + value1;
 };

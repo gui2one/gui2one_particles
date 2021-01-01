@@ -49147,7 +49147,7 @@ exports.default = Particle;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.interpolate = exports.slerp = exports.smoothStep = exports.lerp = exports.clamp = exports.fit_range = void 0;
+exports.interpolate = exports.slerp = exports.smoothStep = exports.lerp = exports.max = exports.min = exports.clamp = exports.fit_range = void 0;
 
 var fit_range = function fit_range(src, src_min, src_max, dst_min, dst_max) {
   src = exports.clamp(src, src_min, src_max);
@@ -49161,6 +49161,18 @@ var clamp = function clamp(src, min, max) {
 };
 
 exports.clamp = clamp;
+
+var min = function min(val1, val2) {
+  if (val1 < val2) return val1;else return val2;
+};
+
+exports.min = min;
+
+var max = function max(val1, val2) {
+  if (val1 > val2) return val1;else return val2;
+};
+
+exports.max = max;
 
 var lerp = function lerp(ratio, value1, value2) {
   return (value2 - value1) * exports.clamp(ratio, 0, 1) + value1;
@@ -49520,7 +49532,7 @@ var __importDefault = this && this.__importDefault || function (mod) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.LineEmitter = void 0;
+exports.TextureEmitter = exports.LineEmitter = void 0;
 
 var Particle_1 = __importDefault(require("./Particle"));
 
@@ -49542,12 +49554,13 @@ function () {
     this.min_particles_scale = 0.1;
     this.max_particles_scale = 1.0;
     this.do_emission = true;
+    this.forces = new Array();
     this.pixi_container = new PIXI.Container(); // this.pixi_container.autoResize = true;
 
     this.textures = [];
     this.particles = [];
     this.emit_vel = new Vector2_1.default(0.0, 0.0);
-    this.position = new Vector2_1.default();
+    this.position = new Vector2_1.default(0, 0);
     this.amount_per_second = 10;
     this.scale_over_life = new GradientRamp_1.FloatGradientRamp();
     this.scale_over_life.setKeyValue(0, 1.0);
@@ -49565,28 +49578,30 @@ function () {
   };
 
   ParticleEmitter.prototype.emitParticlesBase = function (num) {
-    this.setNewParticlesPos(num);
+    var ok = this.setNewParticlesPos(num);
 
-    for (var i = 0; i < num; i++) {
-      // const p = <Particle>PIXI.Sprite.from("snowflake.png"); // as Particle;
-      var p = this.particles[this.particles.length - 1 - i];
-      p.anchor.set(0.5);
-      p.scale.set(Utils_1.fit_range(Math.random(), 0, 1, this.min_particles_scale, this.max_particles_scale));
-      p.mass = Utils_1.fit_range(Math.random(), 0, 1, 0.1, 1.0);
-      p.tint = 0xff0000;
-      this.rand_vel_amount;
-      var new_vel = this.emit_vel.clone();
-      var rand_vel = new Vector2_1.default(Math.random() * 2 - 1, Math.random() * 2 - 1);
-      rand_vel.normalize();
-      rand_vel.multScalar(this.rand_vel_amount * Math.random());
-      new_vel.add(rand_vel);
-      p.velocity = new_vel;
-      var emitter_pos = this.position.clone();
-      p.rotation_speed = Utils_1.fit_range(Math.random(), 0, 1, 0.0, 0.3);
-      p.rotate_clockwise = Math.random() > 0.5;
-      p.life = 10.0;
-      var rand_tex_id = Math.floor(Math.random() * this.textures.length);
-      p.texture = this.textures[rand_tex_id];
+    if (ok) {
+      for (var i = 0; i < num; i++) {
+        // const p = <Particle>PIXI.Sprite.from("snowflake.png"); // as Particle;
+        var p = this.particles[this.particles.length - 1 - i];
+        p.anchor.set(0.5);
+        p.scale.set(Utils_1.fit_range(Math.random(), 0, 1, this.min_particles_scale, this.max_particles_scale));
+        p.mass = Utils_1.fit_range(Math.random(), 0, 1, 0.1, 1.0);
+        p.tint = 0xff0000;
+        this.rand_vel_amount;
+        var new_vel = this.emit_vel.clone();
+        var rand_vel = new Vector2_1.default(Math.random() * 2 - 1, Math.random() * 2 - 1);
+        rand_vel.normalize();
+        rand_vel.multScalar(this.rand_vel_amount * Math.random());
+        new_vel.add(rand_vel);
+        p.velocity = new_vel;
+        var emitter_pos = this.position.clone();
+        p.rotation_speed = Utils_1.fit_range(Math.random(), 0, 1, 0.0, 0.3);
+        p.rotate_clockwise = Math.random() > 0.5;
+        p.life = 3.0;
+        var rand_tex_id = Math.floor(Math.random() * this.textures.length);
+        p.texture = this.textures[rand_tex_id];
+      }
     }
 
     this.pixi_container.removeChildren();
@@ -49601,7 +49616,9 @@ function () {
     console.warn("emit method is Not implemented");
   };
 
-  ParticleEmitter.prototype.setNewParticlesPos = function (num) {};
+  ParticleEmitter.prototype.setNewParticlesPos = function (num) {
+    return undefined;
+  };
 
   ParticleEmitter.prototype.startEmission = function () {
     this.do_emission = true;
@@ -49614,6 +49631,7 @@ function () {
   ParticleEmitter.prototype.update = function (ps) {
     var delta_time = ps.clock.getDeltaTime();
     var forces = ps.forces;
+    var local_forces = this.forces;
 
     if (this.do_emission) {
       var trigger_time = 1.0 / this.amount_per_second;
@@ -49628,11 +49646,24 @@ function () {
     for (var _i = 0, _a = this.particles; _i < _a.length; _i++) {
       var p = _a[_i]; // velocity
 
-      var vel = p.velocity.clone();
+      var vel = p.velocity.clone(); //global particle system  forces
 
       for (var _b = 0, forces_1 = forces; _b < forces_1.length; _b++) {
         var force = forces_1[_b];
-        vel = force.update(p); // vel.multScalar(delta_time);
+        vel = force.update(p);
+      } // add forces local to this emitter
+      //first filter forces that are already in global forces
+
+
+      local_forces = local_forces.filter(function (value) {
+        return !forces.some(function (element) {
+          return element === value;
+        });
+      });
+
+      for (var _c = 0, local_forces_1 = local_forces; _c < local_forces_1.length; _c++) {
+        var force = local_forces_1[_c];
+        vel = force.update(p);
       } // vel.multScalar(delta_time);
 
 
@@ -49643,7 +49674,7 @@ function () {
       p.rotation += delta_time * p.rotation_speed * (p.rotate_clockwise ? 1 : -1);
       var scale_now = this.scale_over_life.getValueAt(Utils_1.clamp(p.age / p.life, 0, 1)); // let scale = fit_range(p.age, 0, p.life, 0.1, 0.02);
 
-      p.scale.set(p.scale.x * scale_now, p.scale.y * scale_now);
+      p.scale.set(scale_now, scale_now);
       var clr = this.color_over_life.getValueAt(p.age / p.life);
       clr.r = Math.round(clr.r * 255);
       clr.g = Math.round(clr.g * 255);
@@ -49655,8 +49686,8 @@ function () {
       if (p.age > p.life) p.dead = true;
 
       if (this.kill_function) {
-        for (var _c = 0, _d = this.particles; _c < _d.length; _c++) {
-          var p_1 = _d[_c];
+        for (var _d = 0, _e = this.particles; _d < _e.length; _d++) {
+          var p_1 = _e[_d];
           if (this.kill_function(p_1)) p_1.dead = true;
         }
       }
@@ -49700,12 +49731,104 @@ function (_super) {
       p.position.set(p_pos.x, p_pos.y);
       this.particles.push(p);
     }
+
+    return true;
   };
 
   return LineEmitter;
 }(ParticleEmitter);
 
 exports.LineEmitter = LineEmitter;
+
+var TextureEmitter =
+/** @class */
+function (_super) {
+  __extends(TextureEmitter, _super);
+
+  function TextureEmitter() {
+    var _this = _super.call(this) || this;
+
+    _this.loaded = false;
+    _this.points = new Array();
+    return _this;
+  }
+
+  TextureEmitter.prototype.setTexture = function (file_url, down_sample) {
+    var _this = this;
+
+    if (down_sample === void 0) {
+      down_sample = 2;
+    }
+
+    this.loaded = false;
+    this.file_url = file_url;
+    var img = new Image();
+    img.src = this.file_url; // console.log(img);
+
+    var canvas = document.createElement("canvas");
+    var sampling = down_sample; // document.body.appendChild(canvas);
+
+    var ctx = canvas.getContext("2d");
+
+    img.onload = function () {
+      while (img.width / sampling < 2) {
+        sampling--;
+
+        if (sampling < 1) {
+          sampling = 1;
+          break;
+        }
+      }
+
+      var w, h;
+      w = img.width / sampling;
+      h = img.height / sampling;
+      canvas.width = w;
+      canvas.height = h;
+      ctx.drawImage(img, 0, 0, w, h);
+      var pix_data = ctx.getImageData(0, 0, w, h);
+      console.log(pix_data.data.length);
+
+      for (var y = 0; y < h; y++) {
+        for (var x = 0; x < w; x++) {
+          var pix_id = (x + y * w) * 4; // 4 channels (rgba)
+
+          var pix_value = pix_data.data[pix_id];
+
+          if (pix_value > 200) {
+            _this.points.push(new Vector2_1.default(x, y));
+          }
+        }
+      }
+
+      console.log(_this.loaded);
+      _this.loaded = true;
+    };
+  };
+
+  TextureEmitter.prototype.setNewParticlesPos = function (num) {
+    if (this.loaded === true) {
+      // console.log("emit");
+      for (var i = 0; i < num; i++) {
+        var p = new Particle_1.default();
+        var rand_val = Math.random();
+        var rand_index = Math.floor(rand_val * this.points.length);
+        var pt_pos = this.points[rand_index];
+        var p_pos = this.position.clone();
+        p.position.set(p_pos.x + pt_pos.x, p_pos.y + pt_pos.y);
+        this.particles.push(p);
+      }
+
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  return TextureEmitter;
+}(ParticleEmitter);
+
+exports.TextureEmitter = TextureEmitter;
 },{"./Particle":"Particle.ts","./Vector2":"Vector2.ts","pixi.js":"../../node_modules/pixi.js/lib/pixi.es.js","./Utils":"Utils.ts","./GradientRamp":"GradientRamp.ts"}],"../../node_modules/noisejs/index.js":[function(require,module,exports) {
 var global = arguments[3];
 /*
@@ -50854,6 +50977,7 @@ window.PIXI = PIXI;
 window.Vector2 = Vector2_1.default;
 window.ParticleSystem = ParticleSystem;
 window.LineEmitter = ParticleEmitter_1.LineEmitter;
+window.TextureEmitter = ParticleEmitter_1.TextureEmitter;
 window.ParticleForceDirectional = ParticleForce_1.ParticleForceDirectional;
 window.ParticleForcePoint = ParticleForce_1.ParticleForcePoint;
 window.ParticleForceNoise = ParticleForce_1.ParticleForceNoise;
@@ -50886,7 +51010,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50338" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65460" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

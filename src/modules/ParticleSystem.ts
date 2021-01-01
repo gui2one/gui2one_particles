@@ -1,5 +1,5 @@
 import Clock from "./Clock";
-import ParticleEmitter, { LineEmitter } from "./ParticleEmitter";
+import ParticleEmitter, { LineEmitter, TextureEmitter } from "./ParticleEmitter";
 import ParticleForceBase, { ParticleForceDirectional, ParticleForcePoint, ParticleForceNoise } from "./ParticleForce";
 import { AdvancedBloomFilter } from "@pixi/filter-advanced-bloom";
 
@@ -37,6 +37,7 @@ window.PIXI = PIXI;
 window.Vector2 = Vector2;
 window.ParticleSystem = ParticleSystem;
 window.LineEmitter = LineEmitter;
+window.TextureEmitter = TextureEmitter;
 window.ParticleForceDirectional = ParticleForceDirectional;
 window.ParticleForcePoint = ParticleForcePoint;
 window.ParticleForceNoise = ParticleForceNoise;
